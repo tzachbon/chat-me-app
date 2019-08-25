@@ -1,0 +1,42 @@
+@import '../../../../../../assets/scss/mixin';
+@import '../../../../../../assets/scss/animation';
+
+:host {
+  @include host;
+  @include flex-center;
+  position: relative;
+  z-index : 4;
+
+
+  ::ng-deep mat-card {
+    font-family   : 'Noto-Sans';
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    box-shadow    : none;
+    animation     : shadow 1s ease-out forwards;
+
+    mat-card-subtitle {
+      text-align: center;
+    }
+
+    form {
+      @include flex-center;
+
+      .button-container {
+        width: 100%;
+
+        button {
+          width: 100%;
+        }
+      }
+    }
+
+    mat-card-actions {
+      transform: scale(.8);
+    }
+  }
+
+
+
+}

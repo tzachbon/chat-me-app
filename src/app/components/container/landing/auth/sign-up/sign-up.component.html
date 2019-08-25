@@ -1,0 +1,102 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-vertical-stepper #stepper>
+    <mat-step>
+      <ng-template matStepLabel>About Your Self</ng-template>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Last name, First name"
+          formControlName="fullName"
+          required
+        />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Technical Stuff</ng-template>
+      <mat-form-field>
+        <input
+          matInput
+          type="email"
+          placeholder="Email"
+          formControlName="email"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          [type]="showPassword ? 'text' : 'password'"
+          placeholder="Password"
+          formControlName="password"
+          required
+        />
+        <mat-icon
+          matSuffix
+          (click)="showPassword = !showPassword"
+          class="mat-18"
+          >{{
+            showPassword
+              ? '
+            visibility'
+              : '
+            visibility_off'
+          }}</mat-icon
+        >
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>
+        Upload a nice image
+      </ng-template>
+      <div class="image-control-container">
+        <div class="image-control">
+          <button
+            type="button"
+            class="accent-button"
+            (click)="imagePicker.click()"
+          >
+            Upload Image
+          </button>
+          <input
+            [required]="true"
+            style="display: none"
+            type="file"
+            #imagePicker
+            (change)="onImagePicked($event)"
+            [accept]="'image/*'"
+          />
+        </div>
+        <img
+          class="image"
+          *ngIf="form.get('image').value"
+          [src]="form.get('image').value"
+          alt="Image"
+        />
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Finish Line</ng-template>
+      <div class="button-container">
+        <button
+          class="primary-button"
+          [ngClass]="{ 'submitted-button': isLoading }"
+          [disabled]="form.invalid"
+        >
+          <ng-container *ngIf="!submitted; else elseSubmitted">
+            Sign Up
+          </ng-container>
+          <ng-template #elseSubmitted>
+            <mat-icon class="mat-18">done</mat-icon>
+          </ng-template>
+        </button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+</form>

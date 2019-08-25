@@ -1,0 +1,36 @@
+@import 'src/assets/scss/colors';
+@import 'src/assets/scss/animation';
+
+:host {
+  ::ng-deep .mat-stepper-vertical {
+    background-color: transparent;
+
+    .mat-form-field {
+      margin: 1rem;
+    }
+
+    .image-control-container {
+      display        : flex;
+      justify-content: space-between;
+
+      .image {
+        max-height: 10rem;
+        max-width : auto;
+      }
+    }
+
+    .button-container {
+      padding: 1rem;
+    }
+
+  }
+}
+
+
+@media (min-width: 501px) {
+  :host {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+  }
+}

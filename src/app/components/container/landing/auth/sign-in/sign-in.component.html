@@ -1,0 +1,53 @@
+<mat-card class="mat-elevation-z5">
+  <mat-card-header>
+    <mat-card-title>Welcome To Chat Me App</mat-card-title>
+    <mat-card-subtitle>Sign In</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          type="email"
+          placeholder="Email"
+          formControlName="email"
+        />
+        <mat-icon matSuffix class="mat-18"> email</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          [type]="showPassword ? 'text' : 'password'"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <mat-icon
+          matSuffix
+          (click)="showPassword = !showPassword"
+          class="mat-18"
+          >{{
+            showPassword
+              ? '
+            visibility'
+              : '
+            visibility_off'
+          }}</mat-icon
+        >
+      </mat-form-field>
+      <div class="button-container">
+        <button
+          class="primary-button mat-elevation-z3"
+          [disabled]="form.invalid"
+          color="primary"
+        >
+          Sign In
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-actions align="start">
+    <a [routerLink]="['/home/sign-up']" mat-stroked-button color="primary">
+      Already have a user?
+    </a>
+  </mat-card-actions>
+</mat-card>
