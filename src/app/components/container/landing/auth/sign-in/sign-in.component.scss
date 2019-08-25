@@ -24,7 +24,9 @@
       @include flex-center;
 
       .button-container {
-        width: 100%;
+        width          : 100%;
+        display        : flex;
+        justify-content: center;
 
         button {
           width: 100%;

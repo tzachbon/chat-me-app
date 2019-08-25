@@ -10,10 +10,12 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   signUp(user: User) {
-    return this.http.post('auth/sign-up', user);
+    return this.http.post('user/sign-up', user);
   }
 
   signIn(email, password) {
-    return this.http.post('auth/sign-in', { email, password });
+    return this.http.post('user/sign-in', { email, password });
   }
+
+  
 }

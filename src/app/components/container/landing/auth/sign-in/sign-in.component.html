@@ -38,6 +38,7 @@
         <button
           class="primary-button mat-elevation-z3"
           [disabled]="form.invalid"
+          [ngClass]="{ 'submitted-button': isLoading }"
           color="primary"
         >
           Sign In

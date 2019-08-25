@@ -1,5 +1,6 @@
 @import './colors';
 @import './animation';
+@import './mixin';
 
 .primary-button {
   margin             : 1rem;
@@ -35,7 +36,7 @@
 }
 
 .accent-button {
-  margin: 1rem;
+  margin          : 1rem;
   border-radius   : 5rem;
   background-color: #fff;
   font-size       : 2rem;
@@ -61,8 +62,8 @@
 
 .submitted-button {
   background-color: #fff;
-  width           : 4.6rem;
-  height          : 4.6rem;
+  width           : 4.6rem !important;
+  height          : 4.6rem !important;
   border-left     : 2px solid $primary;
   border-right    : 2px solid $primary;
   animation       : rotate 1s linear forwards infinite;

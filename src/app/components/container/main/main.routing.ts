@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SignUpComponent } from './sign-up.component';
-
+import { MainComponent } from './main.component';
+import { AuthGuard } from 'src/app/services/guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    component: SignUpComponent,
+    component: MainComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
@@ -14,4 +15,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class SignUpRoutingModule { }
+export class LandingRoutingModule { }

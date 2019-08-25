@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../../../../services/auth/auth.service';
+import { User } from 'src/app/models/user.model';
+import { IHttp } from 'src/app/models/http.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -17,7 +20,11 @@ export class SignUpComponent implements OnInit {
   submitted = false;
   isLoading = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.initForm();
@@ -46,13 +53,27 @@ export class SignUpComponent implements OnInit {
 
   onSubmit() {
     this.isLoading = true;
-    setTimeout(() => {
+
+    const userData: User = this.form.value;
+    this.authService.onSignUp(userData).subscribe((res: IHttp<{ user: User, token: string }>) => {
+      if (res.isValid) {
+        console.log('====================================');
+        console.log(res.body);
+        console.log('====================================');
+        const { token, user } = res.body;
+        this.authService.setUser(user);
+        this.authService.setToken(token);
+        this.isLoading = false;
+        this.submitted = true;
+        this.router.navigate(['/'], { relativeTo: this.route });
+      }
+    }, e => {
+      console.error('Sign Up Error: ', e);
+
+      this.authService.setUser(null);
+      this.authService.setToken(null);
       this.isLoading = false;
       this.submitted = true;
-      console.log('====================================');
-      console.log(this.form.value);
-      console.log('====================================');
-    }, 50000);
+    });
   }
-
 }

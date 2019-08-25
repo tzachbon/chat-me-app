@@ -9,7 +9,11 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./components/container/landing/landing.module').then(cmp => cmp.LandingModule)
+    loadChildren: () => import('./components/container/landing/landing.module').then(module => module.LandingModule)
+  },
+  {
+    path: 'main',
+    loadChildren: () => import('./components/container/main/main.module').then(module => module.MainModule)
   }
 ];
 

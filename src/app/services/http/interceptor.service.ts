@@ -20,7 +20,7 @@ export class DataInterceptor implements HttpInterceptor {
     if (token) {
       reqClone = req.clone({
         url,
-        headers: req.headers.set('authorization', `Bearer ${token}`)
+        headers: req.headers.set('Authorization', `Bearer ${token}`)
       });
     } else {
       reqClone = req.clone({
