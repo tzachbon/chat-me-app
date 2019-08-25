@@ -17,6 +17,7 @@ export class SignInComponent implements OnInit, OnDestroy {
   isLoading = false;
   user$: Subscription;
 
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -37,26 +38,41 @@ export class SignInComponent implements OnInit, OnDestroy {
   }
 
   initForm() {
+    const email = localStorage.getItem('email');
+    const password = localStorage.getItem('password');
+
     this.form = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)])
+      email: new FormControl(email, [Validators.required, Validators.email]),
+      password: new FormControl(password, [Validators.required, Validators.minLength(6)]),
+      saveUserData: new FormControl(true)
     });
+
+    if (email && password) {
+      this.onSubmit();
+    }
   }
 
   onSubmit() {
     this.isLoading = true;
     const { email, password } = this.form.value;
+
     this.authService.onSignIn(email, password).subscribe((res: IHttp<{ token: string, user: User }>) => {
-      this.isLoading = false;
       console.log('====================================');
       console.log(res.body);
       console.log('====================================');
+      this.onSaveUserData(email, password);
       const { token, user } = res.body;
       this.authService.setUser(user);
       this.authService.setToken(token);
       this.isLoading = false;
 
     })
+  }
+
+  onSaveUserData(email, password) {
+    localStorage.setItem('email', email);
+    localStorage.setItem('password', password);
+
   }
 
   ngOnDestroy() {

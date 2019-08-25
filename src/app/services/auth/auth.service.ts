@@ -26,18 +26,26 @@ export class AuthService {
   }
 
   onSignIn(email, password) {
+
     return this.http.signIn(email, password);
   }
 
   onSignUp(user: User) {
+    this.removeToken();
     return this.http.signUp(user);
   }
 
   getToken() {
+    this.removeToken();
     return localStorage.getItem('token');
   }
 
   setToken(token) {
     localStorage.setItem('token', token);
   }
+
+  removeToken() {
+    localStorage.removeItem('token');
+  }
+
 }

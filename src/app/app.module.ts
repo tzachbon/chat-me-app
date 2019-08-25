@@ -12,8 +12,6 @@ import { SharedModule } from './shared/shared.module';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DataInterceptor } from './services/http/interceptor.service';
-import { AuthGuard } from './services/guards/auth.guard';
-import { UnAuthGuard } from './services/guards/unauth.guard';
 
 @NgModule({
   declarations: [
@@ -33,8 +31,6 @@ import { UnAuthGuard } from './services/guards/unauth.guard';
     useClass: DataInterceptor,
     multi: true
   },
-    UnAuthGuard,
-    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

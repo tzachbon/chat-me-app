@@ -36,18 +36,24 @@
       </mat-form-field>
       <div class="button-container">
         <button
-          class="primary-button mat-elevation-z3"
+          class="primary-button "
           [disabled]="form.invalid"
-          [ngClass]="{ 'submitted-button': isLoading }"
+          [ngClass]="{
+            'submitted-button': isLoading,
+            'mat-elevation-z3': !isLoading
+          }"
           color="primary"
         >
           Sign In
         </button>
+        <mat-checkbox formControlName="saveUserData" color="primary"
+          >You want to auto sign in next time?</mat-checkbox
+        >
       </div>
     </form>
   </mat-card-content>
   <mat-card-actions align="start">
-    <a [routerLink]="['/home/sign-up']" mat-stroked-button color="primary">
+    <a [routerLink]="['/sign-up']" mat-stroked-button color="primary">
       Already have a user?
     </a>
   </mat-card-actions>

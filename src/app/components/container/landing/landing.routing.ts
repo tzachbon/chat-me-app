@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LandingComponent } from './landing.component';
-import { UnAuthGuard } from 'src/app/services/guards/unauth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: LandingComponent,
-    canActivate: [UnAuthGuard],
     children: [
       {
         path: '',
