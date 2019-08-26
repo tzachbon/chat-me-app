@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const headers = require('./util/header.util');
 const userRoutes = require('./routes/user.routes');
+const groupRoutes = require('./routes/group.routes');
 
 const app = express();
 app.use(bodyParser.json({ limit: '10mb', extended: true }));
@@ -10,11 +11,15 @@ app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 app.use(headers);
 
 app.use('/api/v1/user', userRoutes);
+app.use('/api/v1/group', groupRoutes);
 
 const port = process.env.PORT || 8080;
 const PASSWORD = '7412365';
-const URI = `mongodb+srv://tzachb:${PASSWORD}@chatmeapp-ndy1b.mongodb.net/chat?retryWrites=true&w=majority`;
+const URI = `mongodb+srv://tzachb:${PASSWORD}@chatmeapp-ndy1b.mongodb.net/chat`;
 
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
 mongoose
   .connect(URI, { useNewUrlParser: true })
   .then(res => {

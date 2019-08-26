@@ -4,26 +4,26 @@ const jwtMiddleware = require('../middleware/jwt.middleware');
 const Group = require('../models/group.model');
 const User = require('../models/user.model');
 
+router.post('/add-group', jwtMiddleware, async (req, res) => {
+  let { group } = req.body;
+  group = await Group.saveGroup(group);
+  res.status(201).json({
+    isValid: true,
+    body: {
+      group
+    }
+  });
+});
+
 router.get('/:_id', jwtMiddleware, async (req, res) => {
   const { _id } = req.params;
-  const user = await User.findOne({ _id }).populate('groups.groupId');
+  const user = await User.findOne({ _id }).populate('groups');
+  console.log(user.groups);
   const { groups } = user;
   res.status(200).json({
     isValid: true,
     body: {
       groups
-    }
-  });
-});
-
-router.post('/:id', jwtMiddleware, async (req, res) => {
-  const { _id, groupData } = req.params;
-  const group = new Group({ ...groupData });
-  await group.save();
-  res.status(201).json({
-    isValid: true,
-    body: {
-      group
     }
   });
 });

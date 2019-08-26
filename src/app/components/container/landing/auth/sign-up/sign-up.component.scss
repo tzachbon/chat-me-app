@@ -2,8 +2,13 @@
 @import 'src/assets/scss/animation';
 
 :host {
+  .sign-in-link {
+    transform: translateX(10rem);
+  }
+
   ::ng-deep .mat-stepper-vertical {
     background-color: transparent;
+
 
     .mat-form-field {
       margin: 1rem;

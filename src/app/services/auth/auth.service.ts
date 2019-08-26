@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   onSignIn(email, password) {
-
+    this.removeToken();
     return this.http.signIn(email, password);
   }
 
@@ -36,7 +36,6 @@ export class AuthService {
   }
 
   getToken() {
-    this.removeToken();
     return localStorage.getItem('token');
   }
 

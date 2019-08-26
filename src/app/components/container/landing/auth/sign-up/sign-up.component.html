@@ -57,21 +57,9 @@
       </ng-template>
       <div class="image-control-container">
         <div class="image-control">
-          <button
-            type="button"
-            class="accent-button"
-            (click)="imagePicker.click()"
-          >
-            Upload Image
-          </button>
-          <input
-            [required]="true"
-            style="display: none"
-            type="file"
-            #imagePicker
-            (change)="onImagePicked($event)"
-            [accept]="'image/*'"
-          />
+          <app-upload-image
+            [onImagePicked]="onImagePicked.bind(this)"
+          ></app-upload-image>
         </div>
         <img
           class="image"
@@ -104,3 +92,10 @@
     </mat-step>
   </mat-vertical-stepper>
 </form>
+<a
+  class="sign-in-link"
+  color="primary"
+  routerLink="../sign-in"
+  mat-stroked-button
+  >Already Have A User?</a
+>

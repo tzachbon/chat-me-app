@@ -1,0 +1,132 @@
+<app-polygons></app-polygons>
+
+<button class="close-button" (click)="onCreateGroupDialog()" mat-icon-button>
+  <mat-icon class="mat-18">keyboard_arrow_down</mat-icon>
+</button>
+
+<div class="create-group-container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-vertical-stepper>
+      <mat-step>
+        <ng-template matStepLabel>Find People To Chat With</ng-template>
+        <mat-form-field>
+          <input
+            type="text"
+            placeholder="Pick one"
+            matInput
+            formControlName="user"
+            [matAutocomplete]="auto"
+            (input)="onSearchUsers($event)"
+          />
+
+          <mat-progress-spinner
+            [diameter]="20"
+            *ngIf="!isOptionLoaded"
+            class="spinning-auto"
+            mode="indeterminate"
+          >
+          </mat-progress-spinner>
+          <mat-autocomplete
+            #auto="matAutocomplete"
+            (opened)="onSearchUsers()"
+            (optionSelected)="addToUsers($event)"
+            [displayWith]="displayWithFunction"
+          >
+            <mat-option
+              class="option"
+              *ngFor="let user of options"
+              [value]="user"
+            >
+              <img
+                matCardAvatar
+                class="example-option-img"
+                aria-hidden
+                [src]="user.image"
+              />
+              <span>{{ user.fullName }}</span> |
+              <small>Email: {{ user.email }}</small>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <div class="user-list" *ngIf="selectedUsers.length > 0">
+          <mat-list dense>
+            <mat-list-item *ngFor="let user of selectedUsers">
+              <img
+                matCardAvatar
+                class="example-option-img"
+                aria-hidden
+                [src]="user.image"
+              />
+              <span>{{
+                user.fullName.length > 10
+                  ? (user.fullName | slice: 0:10) + '...'
+                  : user.fullName
+              }}</span>
+              <button
+                class="remove-button"
+                mat-icon-button
+                (click)="removeUser(user._id)"
+              >
+                <mat-icon class="mat-18">clear</mat-icon>
+              </button>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div class="button-group">
+          <button type="button" mat-button matStepperNext>Next</button>
+        </div>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Group Name</ng-template>
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            placeholder="Group Name"
+            formControlName="name"
+            required
+          />
+        </mat-form-field>
+
+        <div class="button-group">
+          <button type="button" mat-button matStepperPrevious>Back</button>
+          <button type="button" mat-button matStepperNext>Next</button>
+        </div>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Group Image</ng-template>
+        <div class="image-control-container">
+          <div class="image-control">
+            <app-upload-image
+              [onImagePicked]="onImagePicked.bind(this)"
+            ></app-upload-image>
+          </div>
+          <img
+            matCardAvatar
+            class="image"
+            *ngIf="form.get('image').value"
+            [src]="form.get('image').value"
+            alt="Image"
+          />
+        </div>
+        <div class="button-group">
+          <button type="button" mat-button matStepperPrevious>Back</button>
+          <button type="button" mat-button matStepperNext>Next</button>
+        </div>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Finish Line</ng-template>
+        <button
+          class="primary-button "
+          [disabled]="form.invalid"
+          [ngClass]="{
+            'submitted-button': isLoading
+          }"
+          color="primary"
+        >
+          Save Group
+        </button>
+      </mat-step>
+    </mat-vertical-stepper>
+  </form>
+</div>

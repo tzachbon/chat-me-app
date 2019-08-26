@@ -26,7 +26,9 @@ import { DataInterceptor } from './services/http/interceptor.service';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     SharedModule,
   ],
-  providers: [{ provide: LY_THEME, useClass: MinimaLight, multi: true }, {
+  providers: [
+    { provide: LY_THEME, useClass: MinimaLight, multi: true },
+    {
     provide: HTTP_INTERCEPTORS,
     useClass: DataInterceptor,
     multi: true

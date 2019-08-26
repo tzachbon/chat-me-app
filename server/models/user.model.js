@@ -10,12 +10,8 @@ const userSchema = new mongoose.Schema({
   image: { type: String, required: false, default: imageUri },
   groups: [
     {
-      groupId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'group',
-        require: true,
-        default: []
-      }
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Group'
     }
   ]
 });

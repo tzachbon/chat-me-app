@@ -2,17 +2,19 @@ const jwt = require('jsonwebtoken');
 const secret = require('../util/secret.util');
 
 module.exports = (req, res, next) => {
-  const authHeader = req.get('Authorization');
+  let token, decodedToken, authHeader;
 
-  if (!authHeader) {
-    handleError(res);
-  }
-
-  const token = authHeader.split(' ')[1];
-
-  let decodedToken;
   try {
+    authHeader = req.get('authorization');
+    token = authHeader.split(' ')[1];
     decodedToken = jwt.verify(token, secret);
+
+    if (!authHeader) {
+      handleError(res);
+    }
+
+    req.user = decodedToken._doc;
+    next();
   } catch (e) {
     res.status(500).json({
       isValid: false,
@@ -21,9 +23,6 @@ module.exports = (req, res, next) => {
       }
     });
   }
-
-  req.user = decodedToken._doc;
-  next();
 };
 
 const handleError = res => {

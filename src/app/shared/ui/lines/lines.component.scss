@@ -1,0 +1,50 @@
+@import 'src/assets/scss/colors';
+
+
+
+
+.line-1 {
+  top: 30%;
+}
+
+.line-2 {
+  top: 20%;
+
+}
+
+.line-3 {
+  top: 10%;
+}
+
+.line-1,
+.line-2,
+.line-3 {
+
+  position  : fixed;
+  height    : 150rem;
+  width     : 5rem;
+  transform : rotate(45deg);
+  background: linear-gradient(to bottom left, rgba(255, 255, 255, 0), darken($primary, 10));
+  animation : get-longer 3s linear forwards;
+}
+
+@keyframes get-longer {
+  0% {
+    transform: rotate(45deg) scaleY(0);
+  }
+
+  100% {
+    transform: rotate(45deg) scaleY(2);
+  }
+}
+
+
+@media (min-width: 501px) {
+
+  .line-1,
+  .line-2,
+  .line-3 {
+    margin-top: 20rem;
+    right     : 20%;
+  }
+}

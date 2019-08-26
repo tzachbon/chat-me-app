@@ -1,0 +1,11 @@
+<button type="button" class="accent-button" (click)="imagePicker.click()">
+  Upload Image
+</button>
+<input
+  [required]="true"
+  style="display: none"
+  type="file"
+  #imagePicker
+  (change)="onImagePicked($event)"
+  [accept]="'image/*'"
+/>

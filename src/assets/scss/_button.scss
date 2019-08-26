@@ -3,23 +3,27 @@
 @import './mixin';
 
 .primary-button {
-  margin             : 1rem;
-  border-radius      : 5rem;
-  background-color   : darken($primary, 5);
-  font-size          : 2rem;
-  font-family        : 'Noto-Sans';
-  color              : #fff;
-  border             : .2rem solid #ffffffc4;
-  height             : 46px;
-  width              : 160px;
-  border-radius      : 24px;
-  font-weight        : bold;
-  line-height        : 22px;
-  text-align         : center;
-  transition         : all .4s ease-out;
-  // transition      : width .1s linear;
-  // transition      : height .1s linear;
-  cursor             : pointer;
+  margin       : 1rem;
+  border-radius: 5rem;
+  background   : #00c9ff;
+  background   : -webkit-linear-gradient(to left, $primary, #00c9ff);
+  background   : linear-gradient(to left, $primary, #00c9ff);
+  font-size    : 1.5rem;
+  font-family  : 'Noto-Sans';
+  color        : #fff;
+  border       : .2rem solid #ffffffc4;
+  height       : 46px;
+  width        : 160px;
+  border-radius: 24px;
+  font-weight  : bold;
+  line-height  : 22px;
+  text-align   : center;
+
+  -webkit-animation: move-background 10s ease infinite;
+  -moz-animation   : move-background 10s ease infinite;
+  animation        : move-background 10s ease infinite;
+  transition       : all .4s ease-out;
+  cursor           : pointer;
 
   &:disabled {
     background-color: #eee;
@@ -61,13 +65,13 @@
 
 
 .submitted-button {
-  background-color: #fff;
-  width           : 4.6rem !important;
-  height          : 4.6rem !important;
-  border-left     : 2px solid $primary;
-  border-right    : 2px solid $primary;
-  animation       : rotate 1s linear forwards infinite;
-  transition      : all .3s ease-in-out;
+  background  : #fff;
+  width       : 4.6rem !important;
+  height      : 4.6rem !important;
+  border-left : 2px solid $primary;
+  border-right: 2px solid $primary;
+  animation   : rotate 1s linear forwards infinite;
+  transition  : all .3s ease-in-out;
 
   &:hover {
     filter: none;

@@ -1,0 +1,9 @@
+@import 'src/assets/scss/mixin';
+
+:host {
+  .add-group-button {
+    position: fixed;
+    bottom  : 7%;
+    right   : 7%;
+  }
+}

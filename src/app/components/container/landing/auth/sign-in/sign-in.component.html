@@ -39,8 +39,7 @@
           class="primary-button "
           [disabled]="form.invalid"
           [ngClass]="{
-            'submitted-button': isLoading,
-            'mat-elevation-z3': !isLoading
+            'submitted-button': isLoading
           }"
           color="primary"
         >
@@ -54,7 +53,7 @@
   </mat-card-content>
   <mat-card-actions align="start">
     <a [routerLink]="['/sign-up']" mat-stroked-button color="primary">
-      Already have a user?
+      You Dont Have A User Yet?
     </a>
   </mat-card-actions>
 </mat-card>
