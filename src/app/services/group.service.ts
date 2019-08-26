@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http/http.service';
-import { Group } from '../models/group.model';
+import { Group, GroupWithRole } from '../models/group.model';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GroupService {
-  private groups: Group[] = [];
-  public groups$ = new BehaviorSubject<Group[]>(this.groups);
+  private groups: GroupWithRole[] = [];
+  public groups$ = new BehaviorSubject<GroupWithRole[]>(this.groups);
 
   constructor(private http: HttpService) { }
 
@@ -24,7 +24,7 @@ export class GroupService {
     return this.http.getGroups(id);
   }
 
-  setGroups(groups: Group[]) {
+  setGroups(groups: GroupWithRole[]) {
     this.groups = groups;
     this.groupsHasChanged();
   }

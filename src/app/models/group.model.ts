@@ -5,6 +5,21 @@ export interface Group {
   _id?: string;
   name: string;
   image: string;
-  users: User[] | { userId: string }[];
+  users: UserGroup[] | User[];
   messages?: Message[];
+}
+
+export interface GroupWithRole {
+  group: Group;
+  role: ERole;
+}
+
+export interface UserGroup {
+  userId: string;
+  role: ERole;
+}
+
+export enum ERole {
+  admin = 'admin',
+  regular = 'regular'
 }

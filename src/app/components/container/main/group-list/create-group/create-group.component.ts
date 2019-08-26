@@ -5,7 +5,7 @@ import { GroupService } from 'src/app/services/group.service';
 import { IHttp } from 'src/app/models/http.model';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { Group } from '../../../../models/group.model';
+import { Group, UserGroup, ERole } from '../../../../../models/group.model';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -96,8 +96,9 @@ export class CreateGroupComponent implements OnInit {
   onSubmit() {
     this.isLoading = true;
     const { name, image } = this.form.value;
-    const users = this.selectedUsers.map(user => ({ userId: user._id }));
-    users.push({ userId: this.authService.getUser()._id });
+    const users: UserGroup[] = this.selectedUsers
+      .map(user => ({ userId: user._id, role: ERole.regular }));
+    users.push({ userId: this.authService.getUser()._id, role: ERole.admin });
     const group: Group = {
       name,
       image,

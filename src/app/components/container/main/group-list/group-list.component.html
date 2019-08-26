@@ -1,0 +1,39 @@
+<ng-container *ngIf="!isLoading">
+  <mat-nav-list dense *ngIf="groups.length">
+    <mat-list-item
+      *ngFor="let groupData of groups"
+      (click)="routeToChat(groupData.group._id)"
+    >
+      <a mat-list-item>
+        <img matCardAvatar [src]="groupData.group.image" />
+        <span>{{ groupData.group.name }}</span>
+      </a>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-nav-list>
+  <div class="no-groups" *ngIf="!groups.length">
+    <span>
+      Opss, you don't have any groups yet
+    </span>
+    <a (click)="onCreateGroupDialog()">Click here to create one</a>
+  </div>
+</ng-container>
+
+<app-polygon-loader *ngIf="isLoading"></app-polygon-loader>
+
+
+<button
+  mat-fab
+  color="primary"
+  class="add-group-button"
+  (click)="onCreateGroupDialog()"
+>
+  <mat-icon class="mat-18">add</mat-icon>
+</button>
+
+<app-create-group
+  [@slideBottom]
+  [initFetchGroups]="initFetchGroups.bind(this)"
+  [onCreateGroupDialog]="onCreateGroupDialog.bind(this)"
+  *ngIf="showCreateGroupDialog"
+></app-create-group>

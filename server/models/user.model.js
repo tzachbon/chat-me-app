@@ -10,8 +10,14 @@ const userSchema = new mongoose.Schema({
   image: { type: String, required: false, default: imageUri },
   groups: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Group'
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Group'
+      },
+      role: {
+        type: String,
+        default: 'regular'
+      }
     }
   ]
 });

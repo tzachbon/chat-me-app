@@ -1,0 +1,22 @@
+@import 'src/assets/scss/colors';
+@import 'src/assets/scss/mixin';
+
+:host {
+  .add-group-button {
+    position: fixed;
+    bottom  : 7%;
+    right   : 7%;
+  }
+
+  .no-groups {
+    @include position-center;
+    text-align: center;
+    font-size : 1.5rem;
+
+    a {
+      font-weight: bold;
+      color      : $primary;
+      font-style : italic;
+    }
+  }
+}

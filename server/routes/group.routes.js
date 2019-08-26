@@ -17,8 +17,8 @@ router.post('/add-group', jwtMiddleware, async (req, res) => {
 
 router.get('/:_id', jwtMiddleware, async (req, res) => {
   const { _id } = req.params;
-  const user = await User.findOne({ _id }).populate('groups');
-  console.log(user.groups);
+  const user = await User.findOne({ _id }).populate('groups._id');
+  console.log(user);
   const { groups } = user;
   res.status(200).json({
     isValid: true,
