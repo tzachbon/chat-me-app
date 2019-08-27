@@ -10,12 +10,20 @@ export class ChatMessageComponent implements OnInit {
   @Input() message: Message;
   @Input() isCurrentUser: boolean;
   @Input() isSiblingMessage: boolean;
-  showDate = false;
+  showControl = false;
   constructor() { }
 
   ngOnInit() {
     console.log(this.isSiblingMessage);
 
+  }
+
+  getUserImage() {
+    const defaultImage = 'https://newsroom.stitchfix.com/wp-content/uploads/2016/08/default-user.png';
+    if (typeof this.message.userId.image !== 'string' && this.message.userId.image.image) {
+      return this.message.userId.image.image;
+    }
+    return defaultImage;
   }
 
 }

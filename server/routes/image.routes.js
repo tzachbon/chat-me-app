@@ -10,8 +10,16 @@ router.post('/', jwtMiddleware, async (req, res) => {
   console.log('====================================');
   const promises = [];
   imagesArray.forEach(_id => {
-    const promise = Image.findOne({ _id }).exec();
-    promises.push(promise);
+    if (_id) {
+      const promise = Image.findOne({ _id }).exec();
+      promises.push(promise);
+    } else {
+      promises.push(
+        new Promise((res, rej) => {
+          res(null);
+        })
+      );
+    }
   });
 
   const images = await Promise.all(promises);
@@ -19,6 +27,17 @@ router.post('/', jwtMiddleware, async (req, res) => {
     isValid: true,
     body: {
       images
+    }
+  });
+});
+
+router.get('/:_id', async (req, res) => {
+  const { _id } = req.params;
+  const image = await Image.findOne({ _id });
+  res.status(200).json({
+    isValid: true,
+    body: {
+      image
     }
   });
 });

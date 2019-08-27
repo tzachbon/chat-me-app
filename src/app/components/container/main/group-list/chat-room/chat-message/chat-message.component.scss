@@ -1,17 +1,19 @@
-@import 'src/assets/scss/colors';
+@import '../../../../../../../assets/scss/colors';
+@import '../../../../../../../assets/scss/animation';
 
 :host {
   width         : 100%;
   display       : flex;
   flex-direction: column;
   height        : auto;
-  margin        : 1rem 0;
+  margin        : .5rem 0;
 
-  .message-date {
+  .message-control {
     text-align : center;
     font-weight: bold;
     font-style : italic;
     margin     : .5rem;
+    animation: slideLeft .7s ease-out forwards;
   }
 
   .user,
@@ -19,6 +21,7 @@
     width  : 100%;
     display: flex;
     height : auto;
+    padding: 0 1rem;
 
     &-message {
       position       : relative;
@@ -42,6 +45,14 @@
         font-style : italic;
         margin     : .1rem .3rem;
       }
+
+      &-date {
+        opacity   : .6;
+        font-size : 1rem;
+        font-style: italic;
+        margin-top: .3rem;
+
+      }
     }
 
     &-sibling.user-message::after {
@@ -53,6 +64,7 @@
 
   .user {
     justify-content: flex-end;
+
 
 
     &-message {

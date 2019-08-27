@@ -16,6 +16,8 @@ router.post('/add-group', jwtMiddleware, async (req, res) => {
   });
 });
 
+
+
 router.post('/send-message', jwtMiddleware, async (req, res) => {
   const { groupId, message } = req.body;
   let group = await Group.findOne({ _id: groupId });
@@ -56,7 +58,8 @@ router.get('/messages/:groupId/:userId', jwtMiddleware, async (req, res) => {
     res.status(200).json({
       isValid: true,
       body: {
-        messages: group.messages
+        messages: group.messages,
+        group
       }
     });
   } else {

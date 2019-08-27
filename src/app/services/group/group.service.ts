@@ -4,6 +4,7 @@ import { IHttp } from 'src/app/models/http.model';
 import { GroupWithRole, Group } from 'src/app/models/group.model';
 import { HttpService } from '../http/http.service';
 import { Message } from '../../models/message.model';
+import { Image } from '../../models/image.model';
 
 @Injectable({
   providedIn: 'root'
@@ -39,13 +40,26 @@ export class GroupService {
     return this.http.sendMessage(groupId, message);
   }
 
+  onGetImage(group: Group, callBack?: () => void) {
+    if (typeof group.image === 'string') {
+      this.http.getImage(group.image).subscribe((res: IHttp<{ image: Image }>) => {
+        if (res.isValid) {
+          group.image = res.body.image;
+          if (callBack) {
+            callBack();
+          }
+        }
+      });
+    }
+  }
+
   onGetImages(callback?: () => void) {
-    const imagesArray: string[] = this.groups.map(group => {
+    const imagesArray: any = this.groups.map(group => {
       if (group.group) {
         return group.group.image;
       }
       return '';
-    }).filter(img => img);
+    });
     this.http.getImages(imagesArray).subscribe((res: IHttp<{ images: { image: string, _id: string }[] }>) => {
       if (res.isValid) {
         const images = res.body.images;

@@ -1,10 +1,11 @@
 import { User } from 'src/app/models/user.model';
 import { Message } from './message.model';
+import { Image } from './image.model';
 
 export interface Group {
   _id?: string;
   name: string;
-  image: string;
+  image: string | Image;
   users: UserGroup[] | User[];
   messages?: Message[];
 }

@@ -1,11 +1,11 @@
-<mat-list-item (click)="showDate = !showDate">
+<div (click)="showControl = !showControl">
   <ng-container *ngIf="!isCurrentUser; else currentUserRef">
     <div class="other-user">
       <img
         [style.opacity]="isSiblingMessage ? '0' : '1'"
         matCardAvatar
         class="other-user-image"
-        [src]="message.userId.image.image"
+        [src]="getUserImage()"
       />
       <span
         class="other-user-message"
@@ -15,6 +15,9 @@
           message.userId.fullName
         }}</span>
         <span class="other-user-message-content">{{ message.message }}</span>
+        <span class="other-user-message-control">{{
+          message.date | date: 'shortTime'
+        }}</span>
       </span>
     </div>
   </ng-container>
@@ -27,7 +30,10 @@
         <span class="user-message-author" *ngIf="!isSiblingMessage">{{
           message.userId.fullName
         }}</span>
-        <p class="user-message-content">{{ message.message }}</p>
+        <span class="user-message-content">{{ message.message }}</span>
+        <span class="user-message-control">{{
+          message.date | date: 'shortTime'
+        }}</span>
       </span>
       <img
         [style.opacity]="isSiblingMessage ? '0' : '1'"
@@ -37,7 +43,7 @@
       />
     </div>
   </ng-template>
-</mat-list-item>
-<span class="message-date" *ngIf="showDate">{{
-  message.date | date: 'dd/MM/yyyy hh/mm/ss'
-}}</span>
+</div>
+<span class="message-control" *ngIf="showControl">
+  Control Panel In Work
+</span>

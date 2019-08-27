@@ -21,7 +21,8 @@ import { IHttp } from 'src/app/models/http.model';
       })),
       transition(':enter', animate('0.3s ease-in')),
       transition(':leave', animate('0.3s ease-out')),
-    ])
+    ]),
+
   ]
 })
 export class GroupListComponent implements OnInit, OnDestroy {
@@ -78,9 +79,18 @@ export class GroupListComponent implements OnInit, OnDestroy {
   getPic(group: Group) {
     const loader = 'https://i.gifer.com/ZZ5H.gif';
     if (group) {
-      return this.imagesLoaded ? group.image : loader;
+      return this.imagesLoaded ? this.getTemplateGroupImage(group) : loader;
     }
     return loader;
+  }
+
+  getTemplateGroupImage(group: Group) {
+    const defaultImage = 'https://dk1xgl0d43mu1.cloudfront.net/static_assets/images/default_medium_group_icon.png';
+
+    if (typeof group.image === 'string' && group.image.includes('image')) {
+      return group.image;
+    }
+    return defaultImage;
   }
 
   ngOnDestroy() {

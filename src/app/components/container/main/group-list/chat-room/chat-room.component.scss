@@ -1,12 +1,35 @@
 @import 'src/assets/scss/colors';
+@import 'src/assets/scss/mixin';
 
 :host {
   position: absolute;
   width   : 100%;
   height  : calc(100vh - 5.6rem);
 
+  .control-container {
+    height  : 5rem;
+    position: relative;
+    padding : 0 1rem;
+
+
+    .group-data {
+      @include position-center;
+      display        : flex;
+      justify-content: center;
+      align-items    : center;
+      font-size      : 1.6rem;
+      color          : $primary;
+      font-weight    : bold;
+      font-style     : italic;
+
+      &>* {
+        margin: 0 .4rem;
+      }
+    }
+  }
+
   .messages-container {
-    height  : calc(100% - 7.5rem);
+    height  : calc(100% - 7.5rem - 5rem);
     overflow: scroll;
 
     mat-nav-list {

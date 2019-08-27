@@ -29,10 +29,10 @@ import { DataInterceptor } from './services/http/interceptor.service';
   providers: [
     { provide: LY_THEME, useClass: MinimaLight, multi: true },
     {
-    provide: HTTP_INTERCEPTORS,
-    useClass: DataInterceptor,
-    multi: true
-  },
+      provide: HTTP_INTERCEPTORS,
+      useClass: DataInterceptor,
+      multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })

@@ -44,5 +44,9 @@ export class HttpService {
     return this.http.post(`group/send-message`, { groupId, message });
   }
 
+  getImage(imageId) {
+    return this.http.get(`image/${imageId}`);
+  }
+
 
 }

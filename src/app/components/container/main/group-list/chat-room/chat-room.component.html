@@ -1,15 +1,22 @@
 <ng-container *ngIf="!isLoading; else loaderRef">
+  <div class="control-container">
+    <button [routerLink]="['../']" mat-icon-button>
+      <mat-icon class="mat-18">arrow_back_ios</mat-icon>
+    </button>
+    <div class="group-data" *ngIf="group">
+      <img [src]="getPic()" matCardAvatar />
+      <span>{{ group.name }}</span>
+    </div>
+  </div>
   <mat-nav-list class="messages-container">
-    <mat-nav-list dense>
-      <div #messagesContainerRef>
-        <app-chat-message
-          *ngFor="let message of messages; let i = index"
-          [message]="message"
-          [isCurrentUser]="isCurrentUser(message.userId)"
-          [isSiblingMessage]="isSiblingMessage(i, message.userId)"
-        ></app-chat-message>
-      </div>
-    </mat-nav-list>
+    <div #messagesContainerRef>
+      <app-chat-message
+        *ngFor="let message of messages; let i = index"
+        [message]="message"
+        [isCurrentUser]="isCurrentUser(message.userId)"
+        [isSiblingMessage]="isSiblingMessage(i, message.userId)"
+      ></app-chat-message>
+    </div>
   </mat-nav-list>
   <div class="input-container">
     <mat-form-field appearance="outline">

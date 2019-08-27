@@ -19,6 +19,29 @@
 }
 
 
+@keyframes slideRight {
+  0% {
+    transform: translateX(-100vw);
+  }
+
+  100% {
+    transform: translateX(0vw);
+
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(100vw);
+  }
+
+  100% {
+    transform: translateX(0vw);
+
+  }
+}
+
+
 
 @keyframes shadow {
   0% {

@@ -7,20 +7,23 @@ import { IHttp } from 'src/app/models/http.model';
 import { Message } from '../../../../../models/message.model';
 import { WebsocketService } from 'src/app/services/websocket/websocket.service';
 import { IWebSocketData } from 'src/app/models/websocket.model';
-import { MatNavList } from '@angular/material';
 import { User } from 'src/app/models/user.model';
+import { Group } from 'src/app/models/group.model';
 
 @Component({
   selector: 'app-chat-room',
   templateUrl: './chat-room.component.html',
-  styleUrls: ['./chat-room.component.scss']
+  styleUrls: ['./chat-room.component.scss'],
+
 })
 export class ChatRoomComponent implements OnInit, OnDestroy {
   groupId: string;
   groupId$: Subscription;
+  group: Group;
   messages: Message[] = [];
   messageInput = '';
   isLoading = true;
+  isImageLoaded = false;
 
   @ViewChild('messagesContainerRef', { static: false }) messagesContainerRef: ElementRef<HTMLDivElement>;
 
@@ -54,29 +57,13 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
 
   }
 
-  // joinSaveUserMessage() {
-  //   const tempMessages = [];
-  //   this.messages.forEach((message, i) => {
-  //     // if (i > 0) {
-  //     //   const lastMessage = this.messages[i];
-  //     //   if (lastMessage.userId._id === message.userId._id) {
-
-  //     //   }
-  //     // }
-
-  //     if (typeof message.message === 'string') {
-  //       message.message = [message.message];
-  //     }
-
-  //     if (!tempMessages.length) {
-  //       tempMessages.push(message);
-  //     } else {
-  //       const lastTempItem = tempMessages[tempMessages.length - 1];
-
-
-  //     }
-  //   });
-  // }
+  getPic() {
+    const loader = 'https://i.gifer.com/ZZ5H.gif';
+    if (this.group && typeof this.group.image !== 'string') {
+      return this.isImageLoaded ? this.getTemplateGroupImage() : loader;
+    }
+    return loader;
+  }
 
 
 
@@ -90,7 +77,6 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
       const id = params.get('id');
       if (id) {
         this.groupId = id;
-        // this.onGetMessages();
       }
     });
   }
@@ -98,22 +84,39 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
   scrollToTheLastMessage() {
     setTimeout(() => {
       const lastMsgRef = (this.messagesContainerRef.nativeElement.lastChild as HTMLDivElement);
-      lastMsgRef.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })
+      lastMsgRef.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'end' });
     }, 1);
   }
+
 
   onGetMessages() {
     this.isLoading = true;
     this.groupService.onGetMessages(this.groupId, this.authService.getUser()._id)
-      .subscribe((res: IHttp<{ messages: Message[] }>) => {
+      .subscribe((res: IHttp<{ messages: Message[], group: Group }>) => {
         if (res.isValid) {
           this.messages = res.body.messages;
+          this.group = res.body.group;
           this.connect();
+          this.onGetGroupImage();
           this.isLoading = false;
           this.scrollToTheLastMessage();
-
         }
       });
+  }
+
+  getTemplateGroupImage() {
+    const defaultImage = 'https://dk1xgl0d43mu1.cloudfront.net/static_assets/images/default_medium_group_icon.png';
+    if (typeof this.group.image !== 'string' && this.group.image.image) {
+      return this.group.image.image;
+    }
+    return defaultImage;
+  }
+
+  onGetGroupImage() {
+    const callBack = () => {
+      this.isImageLoaded = true;
+    };
+    this.groupService.onGetImage(this.group, callBack);
   }
 
   isSiblingMessage(index: number, user: User) {
