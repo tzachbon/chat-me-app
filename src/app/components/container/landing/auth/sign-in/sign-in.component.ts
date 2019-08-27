@@ -32,7 +32,7 @@ export class SignInComponent implements OnInit, OnDestroy {
   initUserCheck() {
     this.user$ = this.authService.user$.subscribe(user => {
       if (user) {
-        this.router.navigate(['/main'], { relativeTo: this.route });
+        this.navigateToPath();
       }
     });
   }
@@ -64,6 +64,16 @@ export class SignInComponent implements OnInit, OnDestroy {
       this.isLoading = false;
 
     })
+  }
+
+  navigateToPath() {
+    const path = localStorage.getItem('path');
+    if (path) {
+      this.router.navigate([path], { relativeTo: this.route });
+      localStorage.removeItem('path');
+    } else {
+      this.router.navigate(['/main'], { relativeTo: this.route });
+    }
   }
 
   onSaveUserData(email, password) {

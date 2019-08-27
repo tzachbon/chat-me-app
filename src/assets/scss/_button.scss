@@ -63,6 +63,12 @@
   }
 }
 
+.fab-button {
+  background: #00c9ff;
+  background: -webkit-linear-gradient(to left, $primary, #00c9ff);
+  background: linear-gradient(to left, $primary, #00c9ff);
+}
+
 
 .submitted-button {
   background  : #fff;

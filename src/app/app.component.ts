@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LyTheme2, ThemeVariables } from '@alyle/ui';
+import { Router, ActivatedRoute } from '@angular/router';
 
 const STYLES = (theme: ThemeVariables) => ({
   '@global': {
@@ -23,6 +24,13 @@ export class AppComponent {
 
   title = 'chat-me-app';
 
-  constructor(private theme: LyTheme2) { }
+  constructor(private theme: LyTheme2) {
+    this.fetchUrlPath();
+  }
+
+  fetchUrlPath() {
+    const path = window.location.pathname;
+    localStorage.setItem('path', path);
+  }
 
 }

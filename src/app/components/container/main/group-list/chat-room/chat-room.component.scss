@@ -1,0 +1,26 @@
+@import 'src/assets/scss/colors';
+
+:host {
+  position: absolute;
+  width   : 100%;
+  height  : calc(100vh - 5.6rem);
+
+
+  .input-container {
+    position        : absolute;
+    bottom          : 0;
+    left            : 0;
+    width           : 100%;
+    background-color: #fff;
+    box-shadow      : 0rem 0rem 1.5rem 0rem rgba($primary, 0.109);
+
+    .mat-form-field {
+      width : calc(100% - 9.8rem);
+      margin: 0 1rem;
+    }
+
+    button {
+      margin: 1rem;
+    }
+  }
+}

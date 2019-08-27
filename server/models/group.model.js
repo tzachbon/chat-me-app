@@ -23,6 +23,10 @@ const groupSchema = new mongoose.Schema({
           type: String,
           require: true
         },
+        date: {
+          type: Date,
+          require: true
+        },
         userId: {
           type: mongoose.Schema.Types.ObjectId,
           ref: 'User'

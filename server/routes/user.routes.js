@@ -5,6 +5,7 @@ const secret = require('../util/secret.util');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const jwtMiddleware = require('../middleware/jwt.middleware');
+const Image = require('../models/image.model');
 
 router.get('/:name', jwtMiddleware, async (req, res) => {
   const { name } = req.params;
@@ -23,23 +24,34 @@ router.get('/:name', jwtMiddleware, async (req, res) => {
 });
 
 router.post('/sign-up', async (req, res) => {
-  const { password } = req.body;
-  req.body.password = await bcrypt.hash(password, 12);
-  const user = new User(req.body);
-  await user.save();
-  user.password = '';
-  user.image = '';
-  const token = jwt.sign({ ...user }, secret, {
-    expiresIn: '1h'
-  });
-
-  res.status(201).json({
-    isValid: true,
-    body: {
-      user,
-      token
-    }
-  });
+  const { password, email, image } = req.body;
+  const findEmail = await User.findOne({ email });
+  if (!findEmail) {
+    req.body.password = await bcrypt.hash(password, 12);
+    const imageSchema = new Image({ image });
+    await imageSchema.save();
+    req.body.image = imageSchema._id;
+    const user = await new User({ ...req.body, groups: [] });
+    await user.save();
+    const token = jwt.sign({ ...user }, secret, {
+      expiresIn: '1h'
+    });
+    user.password = '';
+    res.status(201).json({
+      isValid: true,
+      body: {
+        user,
+        token
+      }
+    });
+  } else {
+    res.status(400).json({
+      isValid: false,
+      body: {
+        error: 'Email Already Exists'
+      }
+    });
+  }
 });
 
 router.post('/sign-in', async (req, res) => {
