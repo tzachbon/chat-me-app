@@ -1,0 +1,43 @@
+<mat-list-item (click)="showDate = !showDate">
+  <ng-container *ngIf="!isCurrentUser; else currentUserRef">
+    <div class="other-user">
+      <img
+        [style.opacity]="isSiblingMessage ? '0' : '1'"
+        matCardAvatar
+        class="other-user-image"
+        [src]="message.userId.image.image"
+      />
+      <span
+        class="other-user-message"
+        [ngClass]="{ 'other-user-sibling': isSiblingMessage }"
+      >
+        <span class="other-user-message-author" *ngIf="!isSiblingMessage">{{
+          message.userId.fullName
+        }}</span>
+        <span class="other-user-message-content">{{ message.message }}</span>
+      </span>
+    </div>
+  </ng-container>
+  <ng-template #currentUserRef>
+    <div class="user">
+      <span
+        class="user-message"
+        [ngClass]="{ 'user-sibling': isSiblingMessage }"
+      >
+        <span class="user-message-author" *ngIf="!isSiblingMessage">{{
+          message.userId.fullName
+        }}</span>
+        <p class="user-message-content">{{ message.message }}</p>
+      </span>
+      <img
+        [style.opacity]="isSiblingMessage ? '0' : '1'"
+        matCardAvatar
+        class="user-image"
+        [src]="message.userId.image.image"
+      />
+    </div>
+  </ng-template>
+</mat-list-item>
+<span class="message-date" *ngIf="showDate">{{
+  message.date | date: 'dd/MM/yyyy hh/mm/ss'
+}}</span>

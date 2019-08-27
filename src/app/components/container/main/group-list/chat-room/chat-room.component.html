@@ -1,8 +1,30 @@
-<div class="input-container">
-  <mat-form-field appearance="outline">
-    <input matInput type="text" />
-  </mat-form-field>
-  <button mat-fab class="fab-button">
-    <mat-icon class="mat-18">send</mat-icon>
-  </button>
-</div>
+<ng-container *ngIf="!isLoading; else loaderRef">
+  <mat-nav-list class="messages-container">
+    <mat-nav-list dense>
+      <div #messagesContainerRef>
+        <app-chat-message
+          *ngFor="let message of messages; let i = index"
+          [message]="message"
+          [isCurrentUser]="isCurrentUser(message.userId)"
+          [isSiblingMessage]="isSiblingMessage(i, message.userId)"
+        ></app-chat-message>
+      </div>
+    </mat-nav-list>
+  </mat-nav-list>
+  <div class="input-container">
+    <mat-form-field appearance="outline">
+      <input
+        autocomplete="off"
+        [(ngModel)]="messageInput"
+        matInput
+        type="text"
+      />
+    </mat-form-field>
+    <button (click)="onSendMessage()" mat-fab class="fab-button">
+      <mat-icon class="mat-18">send</mat-icon>
+    </button>
+  </div>
+</ng-container>
+<ng-template #loaderRef>
+  <app-polygon-loader></app-polygon-loader>
+</ng-template>

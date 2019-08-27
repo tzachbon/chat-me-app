@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { IHttp } from 'src/app/models/http.model';
 import { GroupWithRole, Group } from 'src/app/models/group.model';
 import { HttpService } from '../http/http.service';
+import { Message } from '../../models/message.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,14 @@ export class GroupService {
   setGroups(groups: GroupWithRole[]) {
     this.groups = groups;
     this.groupsHasChanged();
+  }
+
+  onGetMessages(groupId, userId) {
+    return this.http.getMessages(groupId, userId);
+  }
+
+  onSendMessage(groupId: string, message: Message) {
+    return this.http.sendMessage(groupId, message);
   }
 
   onGetImages(callback?: () => void) {

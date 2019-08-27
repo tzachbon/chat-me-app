@@ -1,0 +1,116 @@
+@import 'src/assets/scss/colors';
+
+:host {
+  width         : 100%;
+  display       : flex;
+  flex-direction: column;
+  height        : auto;
+  margin        : 1rem 0;
+
+  .message-date {
+    text-align : center;
+    font-weight: bold;
+    font-style : italic;
+    margin     : .5rem;
+  }
+
+  .user,
+  .other-user {
+    width  : 100%;
+    display: flex;
+    height : auto;
+
+    &-message {
+      position       : relative;
+      display        : flex;
+      flex-direction : column;
+      justify-content: center;
+      border-radius  : .4em;
+      height         : auto;
+      padding        : .5rem;
+      box-sizing     : border-box;
+
+      &-content {
+        width     : 100%;
+        text-align: center;
+        font-size : 1.5rem;
+      }
+
+      &-author {
+        opacity    : .6;
+        font-weight: bold;
+        font-style : italic;
+        margin     : .1rem .3rem;
+      }
+    }
+
+    &-sibling.user-message::after {
+      display: none
+    }
+
+
+  }
+
+  .user {
+    justify-content: flex-end;
+
+
+    &-message {
+
+      color       : white;
+      background  : #00c9ff;
+      background  : -webkit-linear-gradient(to left, $primary, #00c9ff);
+      background  : linear-gradient(to left, $primary, #00c9ff);
+      margin-right: 2rem;
+      align-items : flex-end;
+
+
+      &:after {
+        content          : '';
+        position         : absolute;
+        right            : 0;
+        top              : 50%;
+        width            : 0;
+        height           : 0;
+        border           : 1rem solid transparent;
+        border-left-color: $primary;
+        border-right     : 0;
+        margin-top       : -1rem;
+        margin-right     : -1rem;
+      }
+    }
+
+
+  }
+
+  .other-user {
+
+    &-image {
+      transform: scale(.9);
+      filter   : drop-shadow(0 0 .3rem rgba(51, 51, 51, 0.27));
+    }
+
+    &-message {
+
+      background : #eee;
+      margin-left: 2rem;
+
+
+
+      &:after {
+        content           : '';
+        position          : absolute;
+        left              : 0;
+        top               : 50%;
+        width             : 0;
+        height            : 0;
+        border            : 1rem solid transparent;
+        border-right-color: #eee;
+        border-left       : 0;
+        margin-top        : -1rem;
+        margin-left       : -1rem;
+      }
+    }
+  }
+
+}

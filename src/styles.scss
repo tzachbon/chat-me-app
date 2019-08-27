@@ -94,6 +94,7 @@ $chat-me-app-theme: mat-light-theme($chat-me-app-primary, $chat-me-app-accent, $
   margin    : 0;
   box-sizing: inherit;
   outline   : none;
+  box-sizing: border-box;
 }
 
 html {
@@ -103,6 +104,7 @@ html {
 body {
   font-family: 'Noto-Sans';
   box-sizing : border-box;
+
 }
 
 img {

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../models/user.model';
 import { Group } from '../../models/group.model';
+import { WebsocketService } from '../websocket/websocket.service';
+import { Message } from '../../models/message.model';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +34,14 @@ export class HttpService {
 
   getImages(images: string[]) {
     return this.http.post(`image`, { images });
+  }
+
+  getMessages(groupId: string, userId: string) {
+    return this.http.get(`group/messages/${groupId}/${userId}`);
+  }
+
+  sendMessage(groupId: string, message: Message) {
+    return this.http.post(`group/send-message`, { groupId, message });
   }
 
 
