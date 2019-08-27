@@ -68,7 +68,7 @@ export class SignInComponent implements OnInit, OnDestroy {
 
   navigateToPath() {
     const path = localStorage.getItem('path');
-    if (path) {
+    if (path && !path.match('sign')) {
       this.router.navigate([path], { relativeTo: this.route });
       localStorage.removeItem('path');
     } else {

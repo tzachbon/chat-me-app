@@ -8,6 +8,10 @@
     right   : 7%;
   }
 
+  .group-image {
+    margin: 1rem;
+  }
+
   .no-groups {
     @include position-center;
     text-align: center;

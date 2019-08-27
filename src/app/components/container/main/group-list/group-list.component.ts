@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { GroupWithRole, ERole, Group } from 'src/app/models/group.model';
-import { GroupService } from 'src/app/services/group.service';
+import { GroupService } from 'src/app/services/group/group.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
@@ -29,6 +29,7 @@ export class GroupListComponent implements OnInit, OnDestroy {
   groups: GroupWithRole[] = [];
   groups$: Subscription;
   isLoading = false;
+  imagesLoaded = false;
 
   constructor(
     private groupService: GroupService,
@@ -60,14 +61,26 @@ export class GroupListComponent implements OnInit, OnDestroy {
 
   initFetchGroups() {
     this.isLoading = true;
+    this.imagesLoaded = false;
     this.groupService.onGetGroups(this.authService.getUser()._id)
       .subscribe((res: IHttp<{ groups: { _id: Group, role: ERole }[] }>) => {
         if (res.isValid) {
           const groups: GroupWithRole[] = res.body.groups.map(grp => ({ group: grp._id, role: grp.role }));
           this.groupService.setGroups(groups);
+          this.groupService.onGetImages(() => {
+            this.imagesLoaded = true;
+          });
         }
         this.isLoading = false;
       });
+  }
+
+  getPic(group: Group) {
+    const loader = 'https://i.gifer.com/ZZ5H.gif';
+    if (group) {
+      return this.imagesLoaded ? group.image : loader;
+    }
+    return loader;
   }
 
   ngOnDestroy() {

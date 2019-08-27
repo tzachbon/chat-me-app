@@ -30,5 +30,9 @@ export class HttpService {
     return this.http.get(`group/${id}`);
   }
 
+  getImages(images: string[]) {
+    return this.http.post(`image`, { images });
+  }
+
 
 }

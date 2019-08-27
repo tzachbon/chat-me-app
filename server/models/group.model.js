@@ -1,12 +1,10 @@
 const mongoose = require('mongoose');
 const User = require('./user.model');
-
-const image =
-  'https://631ae89fcd069a398187-ee282e5b70d98fac94cba689ef7806d7.ssl.cf1.rackcdn.com/default_group_normal.png';
+const Image = require('./image.model');
 
 const groupSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  image: { type: String, default: image },
+  image: { type: mongoose.Schema.ObjectId, ref: 'Image' },
   users: {
     type: [
       {
@@ -38,6 +36,10 @@ const groupSchema = new mongoose.Schema({
 });
 
 const saveGroup = async groupData => {
+  const { image } = groupData;
+  const imageSchema = new Image({ image });
+  await imageSchema.save();
+  groupData.image = imageSchema._id;
   const group = new Group(groupData);
   for (const userData of [...groupData.users]) {
     try {

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { GroupService } from 'src/app/services/group.service';
+import { GroupService } from 'src/app/services/group/group.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 

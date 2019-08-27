@@ -1,15 +1,21 @@
 <ng-container *ngIf="!isLoading">
   <mat-nav-list dense *ngIf="groups.length">
-    <mat-list-item
-      *ngFor="let groupData of groups"
-      (click)="routeToChat(groupData.group._id)"
-    >
-      <a mat-list-item>
-        <img matCardAvatar [src]="groupData.group.image" />
-        <span>{{ groupData.group.name }}</span>
-      </a>
-      <mat-divider></mat-divider>
-    </mat-list-item>
+    <ng-container *ngFor="let groupData of groups; let i = index">
+      <mat-list-item
+        *ngIf="groupData.group"
+        (click)="routeToChat(groupData.group._id)"
+      >
+        <a mat-list-item>
+          <img
+            matCardAvatar
+            class="group-image"
+            [src]="getPic(groupData.group)"
+          />
+          <span>{{ groupData.group.name }}</span>
+        </a>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </ng-container>
   </mat-nav-list>
   <div class="no-groups" *ngIf="!groups.length">
     <span>
@@ -20,7 +26,6 @@
 </ng-container>
 
 <app-polygon-loader *ngIf="isLoading"></app-polygon-loader>
-
 
 <button
   mat-fab

@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const headers = require('./util/header.util');
 const userRoutes = require('./routes/user.routes');
 const groupRoutes = require('./routes/group.routes');
+const imageRoutes = require('./routes/image.routes');
 
 const app = express();
 app.use(bodyParser.json({ limit: '10mb', extended: true }));
@@ -12,6 +13,7 @@ app.use(headers);
 
 app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/group', groupRoutes);
+app.use('/api/v1/image', imageRoutes);
 
 const port = process.env.PORT || 8080;
 const PASSWORD = '7412365';
