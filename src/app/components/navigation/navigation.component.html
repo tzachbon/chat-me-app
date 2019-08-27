@@ -7,12 +7,20 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
   >
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
-    </mat-nav-list>
+    <ng-container *ngIf="isAuth; else isUnAuthRef">
+      <mat-toolbar>Menu</mat-toolbar>
+      <mat-nav-list>
+        <a mat-list-item [routerLink]="['/main']" routerLinkActive="active"
+          >My Groups</a
+        >
+      </mat-nav-list>
+    </ng-container>
+    <ng-template #isUnAuthRef>
+      <div class="unauth-container">
+        <span>Hey, we see that you're not signed in</span>
+        <p routerLink="/">Click Here To Sign In</p>
+      </div>
+    </ng-template>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar>

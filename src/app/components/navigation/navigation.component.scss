@@ -1,5 +1,21 @@
+@import 'src/assets/scss/mixin';
+@import 'src/assets/scss/colors';
+
 :host {
   position: relative;
+
+  .unauth-container {
+    @include position-center;
+    text-align: center;
+
+    p {
+      color      : $primary;
+      font-style : italic;
+      font-weight: bold;
+
+    }
+  }
+
 
   .mat-toolbar {
     background: transparent;
@@ -65,5 +81,3 @@
     ;
   }
 }
-
-

@@ -57,9 +57,6 @@ export class SignInComponent implements OnInit, OnDestroy {
     const { email, password } = this.form.value;
 
     this.authService.onSignIn(email, password).subscribe((res: IHttp<{ token: string, user: User }>) => {
-      console.log('====================================');
-      console.log(res.body);
-      console.log('====================================');
       this.onSaveUserData(email, password);
       const { token, user } = res.body;
       this.authService.setUser(user);
