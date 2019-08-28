@@ -59,6 +59,10 @@
       display: none
     }
 
+    &-sibling.other-user-message::after {
+      display: none
+    }
+
 
   }
 

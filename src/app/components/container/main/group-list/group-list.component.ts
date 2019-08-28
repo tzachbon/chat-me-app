@@ -32,6 +32,8 @@ export class GroupListComponent implements OnInit, OnDestroy {
   isLoading = false;
   imagesLoaded = false;
 
+  public searchGroupInput = '';
+
   constructor(
     private groupService: GroupService,
     private authService: AuthService,
@@ -49,6 +51,18 @@ export class GroupListComponent implements OnInit, OnDestroy {
     this.groups$ = this.groupService.groups$.subscribe(groups => {
       this.groups = groups;
     });
+  }
+
+  filterGroupList(): GroupWithRole[] {
+    return this.groups
+      .filter(grp => {
+        if (!grp.group || this.searchGroupInput === '') {
+          return true;
+        } else {
+          return grp.group.name.toLocaleLowerCase().includes(this.searchGroupInput.toLocaleLowerCase());
+        }
+      }
+      );
   }
 
   routeToChat(id: string) {

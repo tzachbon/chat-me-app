@@ -8,26 +8,35 @@
       <span>{{ group.name }}</span>
     </div>
   </div>
-  <mat-nav-list class="messages-container">
-    <div #messagesContainerRef>
-      <app-chat-message
-        *ngFor="let message of messages; let i = index"
-        [message]="message"
-        [isCurrentUser]="isCurrentUser(message.userId)"
-        [isSiblingMessage]="isSiblingMessage(i, message.userId)"
-      ></app-chat-message>
+
+  <mat-nav-list>
+    <mat-divider></mat-divider>
+    <div class="messages-container" #messagesContainerRef>
+      <div class="message" *ngFor="let message of messages; let i = index">
+        <app-chat-message
+          [message]="message"
+          [isCurrentUser]="isCurrentUser(message.userId)"
+          [isSiblingMessage]="isSiblingMessage(i, message.userId)"
+        ></app-chat-message>
+      </div>
     </div>
   </mat-nav-list>
   <div class="input-container">
     <mat-form-field appearance="outline">
       <input
+        (keydown)="onKeyDownSend($event)"
         autocomplete="off"
         [(ngModel)]="messageInput"
         matInput
         type="text"
       />
     </mat-form-field>
-    <button (click)="onSendMessage()" mat-fab class="fab-button">
+    <button
+      [disabled]="!messageInput"
+      (click)="onSendMessage()"
+      mat-fab
+      class="fab-button"
+    >
       <mat-icon class="mat-18">send</mat-icon>
     </button>
   </div>

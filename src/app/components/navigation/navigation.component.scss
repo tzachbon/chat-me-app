@@ -25,10 +25,11 @@
     position : absolute;
     left     : 50%;
     transform: translateX(-50%);
-    animation: slide-in-top-logo 1s ease-out;
 
     &__icon {
-      margin: 0 .3rem;
+      margin   : 0 .3rem;
+      animation: ease-out-right .6s ease-out;
+
     }
 
     &__text {

@@ -5,6 +5,7 @@ import { GroupWithRole, Group } from 'src/app/models/group.model';
 import { HttpService } from '../http/http.service';
 import { Message } from '../../models/message.model';
 import { Image } from '../../models/image.model';
+import { User } from 'src/app/models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -51,6 +52,29 @@ export class GroupService {
         }
       });
     }
+  }
+
+  onGetUsersImages(users: User[], callback?: () => void) {
+    const usersImages = users.map(user => {
+      if (typeof user.image === 'string') {
+        return user.image;
+      }
+      return '';
+    });
+    this.http.getImages(usersImages).subscribe((res: IHttp<{ images: { image: string, _id: string }[] }>) => {
+      if (res.isValid) {
+        const images = res.body.images;
+        users.map((user, i) => {
+          if (user.image && images[i]) {
+            user.image = images[i];
+          }
+        });
+        if (callback) {
+          callback();
+        }
+      }
+    });
+
   }
 
   onGetImages(callback?: () => void) {

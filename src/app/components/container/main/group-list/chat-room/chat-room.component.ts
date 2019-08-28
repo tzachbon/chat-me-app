@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/co
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { GroupService } from 'src/app/services/group/group.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
 import { IHttp } from 'src/app/models/http.model';
 import { Message } from '../../../../../models/message.model';
 import { WebsocketService } from 'src/app/services/websocket/websocket.service';
@@ -30,7 +30,6 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
   constructor(
     private groupService: GroupService,
     private authService: AuthService,
-    private router: Router,
     private route: ActivatedRoute,
     private wws: WebsocketService
   ) { }
@@ -53,8 +52,6 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
 
   pushMessage(message: Message) {
     this.messages.push(message);
-    // const lastMessage =
-
   }
 
   getPic() {
@@ -64,6 +61,8 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
     }
     return loader;
   }
+
+
 
 
 
@@ -85,6 +84,7 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       const lastMsgRef = (this.messagesContainerRef.nativeElement.lastChild as HTMLDivElement);
       lastMsgRef.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'end' });
+      // this.messagesContainerRef.nativeElement.scrollTop = this.messagesContainerRef.nativeElement.scrollHeight;
     }, 1);
   }
 
@@ -124,6 +124,12 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
       return this.messages[index - 1].userId._id === user._id;
     }
     return false;
+  }
+
+  onKeyDownSend(event: KeyboardEvent) {
+    if (event.code === 'Enter' && this.messageInput) {
+      this.onSendMessage();
+    }
   }
 
   onSendMessage() {

@@ -28,11 +28,13 @@
     }
   }
 
-  .messages-container {
-    height  : calc(100% - 7.5rem - 5rem);
-    overflow: scroll;
+  mat-nav-list {
+    height: calc(100% - 7.5rem - 5rem);
 
-    mat-nav-list {
+    .messages-container {
+      height  : 100%;
+      overflow: scroll;
+
       mat-list-item {
         height: auto;
 

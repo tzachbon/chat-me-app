@@ -22,6 +22,12 @@ export class CreateGroupComponent implements OnInit {
   isOptionLoaded = true;
   selectedUsers: User[] = [];
   isLoading = false;
+  isUserImageLoaded = true;
+  defaultUserImage = [
+    'https://newsroom.stitchfix.com/wp-content/uploads/2016/08/default-user.png',
+    'https://i.gifer.com/ZZ5H.gif'
+  ];
+
 
   constructor(
     private groupService: GroupService,
@@ -34,6 +40,24 @@ export class CreateGroupComponent implements OnInit {
     this.initForm();
   }
 
+  getUserImage(user: User) {
+    if (typeof user.image !== 'string' && user.image.image) {
+      return user.image.image;
+    }
+    return this.getDefaultUserImage();
+  }
+
+  getDefaultUserImage() {
+    return this.isUserImageLoaded ? this.defaultUserImage[0] : this.defaultUserImage[1];
+  }
+
+  loadUserImages() {
+    this.isUserImageLoaded = false;
+    this.groupService.onGetUsersImages(this.options, () => {
+      this.isUserImageLoaded = true;
+    });
+  }
+
   onSearchUsers(event?: Event) {
     if (event) {
       this.isOptionLoaded = false;
@@ -44,7 +68,7 @@ export class CreateGroupComponent implements OnInit {
           this.options = res.body.users;
           this.options = this.options
             .filter(opn => opn._id !== this.authService.getUser()._id);
-          console.log(res.body.users);
+          this.loadUserImages();
         }
         this.isOptionLoaded = true;
       }, e => {

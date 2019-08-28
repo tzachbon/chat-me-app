@@ -1,6 +1,24 @@
 <ng-container *ngIf="!isLoading">
-  <mat-nav-list dense *ngIf="groups.length">
-    <ng-container *ngFor="let groupData of groups; let i = index">
+  <div class="search-container">
+    <mat-form-field appearance="outline">
+      <input
+        autocomplete="off"
+        placeholder="Search For Group"
+        matInput
+        type="text"
+        [(ngModel)]="searchGroupInput"
+      />
+      <mat-icon *ngIf="!searchGroupInput" matSuffix>search</mat-icon>
+      <mat-icon
+        *ngIf="searchGroupInput"
+        matSuffix
+        (click)="searchGroupInput = ''"
+        >clear</mat-icon
+      >
+    </mat-form-field>
+  </div>
+  <mat-nav-list dense *ngIf="filterGroupList().length">
+    <ng-container *ngFor="let groupData of filterGroupList(); let i = index">
       <mat-list-item
         *ngIf="groupData.group"
         (click)="routeToChat(groupData.group._id)"
@@ -17,9 +35,9 @@
       </mat-list-item>
     </ng-container>
   </mat-nav-list>
-  <div class="no-groups" *ngIf="!groups.length">
+  <div class="no-groups" *ngIf="!filterGroupList().length">
     <span>
-      Opss, you don't have any groups yet
+      Opss, we did not find any groups yet
     </span>
     <a (click)="onCreateGroupDialog()">Click here to create one</a>
   </div>
