@@ -102,9 +102,11 @@ html {
 }
 
 body {
-  font-family: 'Noto-Sans';
-  box-sizing : border-box;
-
+  font-family                : 'Noto-Sans';
+  box-sizing                 : border-box;
+  -webkit-user-select        : none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout      : none;
 }
 
 img {

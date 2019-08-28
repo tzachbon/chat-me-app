@@ -9,11 +9,20 @@
         "files": [
           "/favicon.ico",
           "/index.html",
+          "/*.png",
+          "/*.ttf",
+          "/*.woff",
           "/*.css",
           "/*.js"
+        ],
+        "urls": [
+          "https://fonts.googleapis.com/css?family=Roboto:300,400,500&amp;display=swap",
+          "https://fonts.googleapis.com/icon?family=Material+Icons",
+          "https://fonts.googleapis.com/css?family=Roboto:300,400,500|Material+Icons"
         ]
       }
-    }, {
+    },
+    {
       "name": "assets",
       "installMode": "lazy",
       "updateMode": "prefetch",
@@ -21,7 +30,22 @@
         "files": [
           "/assets/**",
           "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
-        ]
+        ],
+      },
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "groups",
+      "urls": [
+        "http://localhost:8080/api/v1/user/*",
+        "http://localhost:8080/api/v1/group/*",
+        "https://chat-me-app-free.herokuapp.com/*"
+      ],
+      "cacheConfig": {
+        "maxAge": "1d",
+        "strategy": "performance",
+        "timeout": "3s"
       }
     }
   ]

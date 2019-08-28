@@ -1,0 +1,125 @@
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-100vh);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-bottom {
+  0% {
+    transform: translateY(100vh);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-100vw);
+  }
+
+  100% {
+    transform: translateX(0vw);
+
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(100vw);
+  }
+
+  100% {
+    transform: translateX(0vw);
+
+  }
+}
+
+
+@keyframes ease-out-right {
+  0% {
+    transform: translateX(-5rem);
+  }
+
+  85% {
+    transform: translateX(.3rem);
+  }
+
+  97% {
+    transform: translateX(-.2rem);
+  }
+
+  100% {
+    transform: translateX(0)
+  }
+}
+
+
+@keyframes shadow {
+  0% {
+    box-shadow: 0 .1rem .2rem 0 rgba(0, 0, 0, 0.101);
+  }
+
+  100% {
+    box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.201);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@-moz-keyframes move-background {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@keyframes move-background {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}
