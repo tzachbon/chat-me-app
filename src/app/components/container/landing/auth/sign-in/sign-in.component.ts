@@ -86,6 +86,7 @@ export class SignInComponent implements OnInit, OnDestroy {
     } else {
       this.router.navigate(['/main'], { relativeTo: this.route });
     }
+    localStorage.removeItem('path');
   }
 
   onSaveUserData(email, password) {

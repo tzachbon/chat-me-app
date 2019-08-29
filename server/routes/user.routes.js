@@ -58,7 +58,7 @@ router.post('/sign-in', async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-    const isPasswordValid = bcrypt.compare(password, user.password);
+    const isPasswordValid = await bcrypt.compare(password, user.password);
     if (isPasswordValid && user) {
       user.password = '';
       user.image = '';
