@@ -1,0 +1,143 @@
+{
+  "configVersion": 1,
+  "timestamp": 1567069804442,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/5-es2015.8246e5c7e844a6f048d2.js",
+        "/5-es5.8246e5c7e844a6f048d2.js",
+        "/6-es2015.ca45610fca4c3c4a8e36.js",
+        "/6-es5.ca45610fca4c3c4a8e36.js",
+        "/7-es2015.280b6502164b932ff895.js",
+        "/7-es5.280b6502164b932ff895.js",
+        "/8-es2015.259edb15bd1a5ee1cb73.js",
+        "/8-es5.259edb15bd1a5ee1cb73.js",
+        "/NotoSans-Bold.98f0cacc6bb63b64b98a.ttf",
+        "/NotoSans-Bold.e83048a8972cf98973e6.woff",
+        "/NotoSans.1ec87d3c8b1452938781.woff",
+        "/NotoSans.5a87cce84010f7cea085.ttf",
+        "/favicon.ico",
+        "/index.html",
+        "/main-es2015.98c2d3663f232713f99e.js",
+        "/main-es5.98c2d3663f232713f99e.js",
+        "/polyfills-es2015.c0373d524358eabe0165.js",
+        "/polyfills-es5.edc6f902596e940ad9f6.js",
+        "/runtime-es2015.b9ccb922ddeb7bda82f9.js",
+        "/runtime-es5.b9ccb922ddeb7bda82f9.js",
+        "/styles.bc73ce061e5486347ea0.css"
+      ],
+      "patterns": [
+        "https:\\/\\/fonts\\.googleapis\\.com\\/css\\?family=Roboto:300,400,500&amp;display=swap",
+        "https:\\/\\/fonts\\.googleapis\\.com\\/icon\\?family=Material\\+Icons",
+        "https:\\/\\/fonts\\.googleapis\\.com\\/css\\?family=Roboto:300,400,500|Material\\+Icons"
+      ]
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/NotoSans-Bold.facaab31bb7e19368f03.woff2",
+        "/NotoSans.7f9bf47a9b36bf2d95b9.woff2",
+        "/assets/fonts/NotoSans-Bold.ttf",
+        "/assets/fonts/NotoSans-Bold.woff",
+        "/assets/fonts/NotoSans-Bold.woff2",
+        "/assets/fonts/NotoSans.ttf",
+        "/assets/fonts/NotoSans.woff",
+        "/assets/fonts/NotoSans.woff2",
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/assets/scss/_animation.scss",
+        "/assets/scss/_button.scss",
+        "/assets/scss/_colors.scss",
+        "/assets/scss/_mixin.scss"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "groups",
+      "patterns": [
+        "http:\\/\\/localhost:8080\\/api\\/v1\\/user\\/.*",
+        "http:\\/\\/localhost:8080\\/api\\/v1\\/group\\/.*",
+        "https:\\/\\/chat-me-app-free\\.herokuapp\\.com\\/.*"
+      ],
+      "strategy": "performance",
+      "maxAge": 86400000,
+      "timeoutMs": 3000,
+      "version": 1
+    }
+  ],
+  "hashTable": {
+    "/5-es2015.8246e5c7e844a6f048d2.js": "a0de0053e3f53ab0e51623bd562d2bc9c4f51b70",
+    "/5-es5.8246e5c7e844a6f048d2.js": "35a3036dc5db14697995580d76d9ba1f3bed5502",
+    "/6-es2015.ca45610fca4c3c4a8e36.js": "2a42c1e55383eb75ba6bbccdf938b01dc9a1f125",
+    "/6-es5.ca45610fca4c3c4a8e36.js": "2413c007797e6b985cb054f06d98b0cf6ef5057d",
+    "/7-es2015.280b6502164b932ff895.js": "e1761595904238be0ef9ae3a3a1a0bf610848bf0",
+    "/7-es5.280b6502164b932ff895.js": "9a350f12bafb611a35039ee6b8cfe9507cdc98ee",
+    "/8-es2015.259edb15bd1a5ee1cb73.js": "38635de58a90c9649e38046f71a2f57b5c7b927e",
+    "/8-es5.259edb15bd1a5ee1cb73.js": "176926e7b4885411d02546b257de076a2695a354",
+    "/NotoSans-Bold.98f0cacc6bb63b64b98a.ttf": "00a4dc42180951b52eb9797cb4d6f64527432220",
+    "/NotoSans-Bold.e83048a8972cf98973e6.woff": "e47eb06c33222aefd1fe78d86c67c90b76303571",
+    "/NotoSans-Bold.facaab31bb7e19368f03.woff2": "280efb6ea5c13accd93fedf6fea0cf36b400a2e3",
+    "/NotoSans.1ec87d3c8b1452938781.woff": "10c7e48304dbc7d6053491eadd046d28a2157da0",
+    "/NotoSans.5a87cce84010f7cea085.ttf": "2b2500b3269369d0d1a29768aaa869405d4f1575",
+    "/NotoSans.7f9bf47a9b36bf2d95b9.woff2": "6fec269ee1d99d623658945047fb0edd123d5f5a",
+    "/assets/fonts/NotoSans-Bold.ttf": "00a4dc42180951b52eb9797cb4d6f64527432220",
+    "/assets/fonts/NotoSans-Bold.woff": "e47eb06c33222aefd1fe78d86c67c90b76303571",
+    "/assets/fonts/NotoSans-Bold.woff2": "280efb6ea5c13accd93fedf6fea0cf36b400a2e3",
+    "/assets/fonts/NotoSans.ttf": "2b2500b3269369d0d1a29768aaa869405d4f1575",
+    "/assets/fonts/NotoSans.woff": "10c7e48304dbc7d6053491eadd046d28a2157da0",
+    "/assets/fonts/NotoSans.woff2": "6fec269ee1d99d623658945047fb0edd123d5f5a",
+    "/assets/icons/icon-128x128.png": "e59b088d39d9016488e9da629292b8db05762ef6",
+    "/assets/icons/icon-144x144.png": "6ceea6ec99547ffe9c0430e0645372a0d9153fbd",
+    "/assets/icons/icon-152x152.png": "30d70944ab474a49eccca29d412caefef4305934",
+    "/assets/icons/icon-192x192.png": "8f79cb29012fe5c443a355f83bca2a3d76d015fc",
+    "/assets/icons/icon-384x384.png": "f4461643f9857cf765428f8d39f628f6feae8d24",
+    "/assets/icons/icon-512x512.png": "39018c775125da6bfd75aa220aa7de11ce3d5c0f",
+    "/assets/icons/icon-72x72.png": "7b66c1745943c08f3378c328d8fd29a2faff8262",
+    "/assets/icons/icon-96x96.png": "546977767af83b00146a3db18298ba5d91b22265",
+    "/assets/scss/_animation.scss": "da43117b62f6f2c007cbfa803ca1d4c78848422c",
+    "/assets/scss/_button.scss": "18e08dfa560964c63ebe32e9d7406a1baa414044",
+    "/assets/scss/_colors.scss": "6ae0d4d531f4bced636834b001bc24491c3d8a4c",
+    "/assets/scss/_mixin.scss": "474f890246115f569b72722d262e0400d7f92296",
+    "/favicon.ico": "fd7f298b040042d718c562754e3558cee11c0476",
+    "/index.html": "b0194fd0dd65a685563e46d6711c92e23710a216",
+    "/main-es2015.98c2d3663f232713f99e.js": "a2de67fadfd610ace00ea8e74128ee0068c6bc8a",
+    "/main-es5.98c2d3663f232713f99e.js": "9df3b6bd4ad3e8a71ad743d360142f3192aa575c",
+    "/polyfills-es2015.c0373d524358eabe0165.js": "f2ccbe2ca4a43b9d945c6dc4aa498cf13cc6a613",
+    "/polyfills-es5.edc6f902596e940ad9f6.js": "1138feca8e5af9a81b53c60c66e38e699121415d",
+    "/runtime-es2015.b9ccb922ddeb7bda82f9.js": "6a0f2923440bffd895b983ce29ad040ec2e9ec8d",
+    "/runtime-es5.b9ccb922ddeb7bda82f9.js": "e85068c107a8287a459fea79aec4d3a5a4ae0624",
+    "/styles.bc73ce061e5486347ea0.css": "47829e51380b4b5d4bb37fad4c960b3bb3ee62c2"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
