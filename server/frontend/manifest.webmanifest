@@ -1,7 +1,7 @@
 {
-  "name": "chat-me-app",
-  "short_name": "chat-me-app",
-  "theme_color": "#1976d2",
+  "name": "ChatMeApp",
+  "short_name": "ChatMeApp",
+  "theme_color": "#fafafa",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "/",

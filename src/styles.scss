@@ -135,3 +135,13 @@ img {
 @import './assets/scss/button';
 @import './assets/scss/colors';
 @import './assets/scss/mixin';
+
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+
+  select,
+  textarea,
+  input {
+    font-size: 16px !important;
+  }
+}

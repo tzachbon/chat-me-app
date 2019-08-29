@@ -30,17 +30,17 @@
         "files": [
           "/assets/**",
           "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
-        ],
-      },
+        ]
+      }
     }
   ],
   "dataGroups": [
     {
       "name": "groups",
       "urls": [
-        "http://localhost:8080/api/v1/user/*",
-        "http://localhost:8080/api/v1/group/*",
-        "https://chat-me-app-free.herokuapp.com/*"
+        "http://localhost:8080/api/v1/user/**",
+        "http://localhost:8080/api/v1/group/**",
+        "https://chat-me-app-free.herokuapp.com/**"
       ],
       "cacheConfig": {
         "maxAge": "1d",
