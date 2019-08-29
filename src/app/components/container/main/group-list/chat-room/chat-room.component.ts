@@ -82,9 +82,9 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
 
   scrollToTheLastMessage() {
     setTimeout(() => {
-      const lastMsgRef = (this.messagesContainerRef.nativeElement.lastChild as HTMLDivElement);
-      lastMsgRef.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'end' });
-      // this.messagesContainerRef.nativeElement.scrollTop = this.messagesContainerRef.nativeElement.scrollHeight;
+      // const lastMsgRef = (this.messagesContainerRef.nativeElement.lastChild as HTMLDivElement);
+      // lastMsgRef.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'end' });
+      this.messagesContainerRef.nativeElement.scrollTop = this.messagesContainerRef.nativeElement.scrollHeight;
     }, 1);
   }
 
