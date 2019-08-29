@@ -53,4 +53,8 @@ export class AuthService {
     localStorage.removeItem('token');
   }
 
+  onSubscribeToNotification(subscription) {
+    return this.http.subscription(subscription, this.getUser()._id);
+  }
+
 }

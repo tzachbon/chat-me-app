@@ -4,6 +4,15 @@ const jwtMiddleware = require('../middleware/jwt.middleware');
 const Group = require('../models/group.model');
 const User = require('../models/user.model');
 const io = require('../util/socket.util');
+const webPush = require('web-push');
+const notificationService = require('../util/notification-keys.util');
+const notificationCreator = notificationService.notificationCreator;
+
+webPush.setVapidDetails(
+  'mailto:tzachbonfil@gmail.com',
+  notificationService.publicKey,
+  notificationService.privateKey
+);
 
 router.post('/add-group', jwtMiddleware, async (req, res) => {
   let { group } = req.body;
@@ -16,8 +25,6 @@ router.post('/add-group', jwtMiddleware, async (req, res) => {
   });
 });
 
-
-
 router.post('/send-message', jwtMiddleware, async (req, res) => {
   const { groupId, message } = req.body;
   let group = await Group.findOne({ _id: groupId });
@@ -27,7 +34,8 @@ router.post('/send-message', jwtMiddleware, async (req, res) => {
     {
       messages
     }
-  );
+  ).populate('users.userId');
+
   const user = await User.findOne({ _id: message.userId }).populate('image');
   message.userId = user;
   io.getIO().emit(groupId, {
@@ -43,6 +51,22 @@ router.post('/send-message', jwtMiddleware, async (req, res) => {
       group
     }
   });
+
+  const users = group.users.map(user => user.userId);
+  const payload = notificationCreator({
+    title: `Message From ${user.fullName}`,
+    icon: './assets/icons/icon-144x144.png',
+    body: message.message
+  });
+  const promises = [];
+  users.forEach(userData => {
+    if (userData.subscription) {
+      const p = webPush.sendNotification(userData.subscription, payload);
+      promises.push(p);
+    }
+  });
+
+  const pRes = await Promise.all(promises);
 });
 
 router.get('/messages/:groupId/:userId', jwtMiddleware, async (req, res) => {

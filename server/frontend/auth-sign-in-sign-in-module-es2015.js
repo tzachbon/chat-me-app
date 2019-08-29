@@ -1,0 +1,219 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["auth-sign-in-sign-in-module"],{
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/container/landing/auth/sign-in/sign-in.component.html":
+/*!************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/container/landing/auth/sign-in/sign-in.component.html ***!
+  \************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-card class=\"mat-elevation-z5\">\n  <mat-card-header>\n    <mat-card-title>Welcome To Chat Me App</mat-card-title>\n    <mat-card-subtitle>Sign In</mat-card-subtitle>\n  </mat-card-header>\n  <mat-card-content>\n    <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\">\n      <mat-form-field appearance=\"outline\">\n        <input\n          matInput\n          type=\"email\"\n          placeholder=\"Email\"\n          formControlName=\"email\"\n        />\n        <mat-icon matSuffix class=\"mat-18\"> email</mat-icon>\n      </mat-form-field>\n      <mat-form-field appearance=\"outline\">\n        <input\n          matInput\n          [type]=\"showPassword ? 'text' : 'password'\"\n          placeholder=\"Password\"\n          formControlName=\"password\"\n        />\n        <mat-icon\n          matSuffix\n          (click)=\"showPassword = !showPassword\"\n          class=\"mat-18\"\n          >{{\n            showPassword\n              ? '\n            visibility'\n              : '\n            visibility_off'\n          }}</mat-icon\n        >\n      </mat-form-field>\n      <div class=\"button-container\">\n        <button\n          class=\"primary-button \"\n          [disabled]=\"form.invalid\"\n          [ngClass]=\"{\n            'submitted-button': isLoading && !error\n          }\"\n          color=\"primary\"\n        >\n          Sign In\n        </button>\n        <mat-error *ngIf=\"error\">{{ error }}</mat-error>\n        <mat-checkbox formControlName=\"saveUserData\" color=\"primary\"\n          >You want to auto sign in next time?</mat-checkbox\n        >\n      </div>\n    </form>\n  </mat-card-content>\n  <mat-card-actions align=\"start\">\n    <a [routerLink]=\"['/sign-up']\" mat-stroked-button color=\"primary\">\n      You Dont Have A User Yet?\n    </a>\n  </mat-card-actions>\n</mat-card>\n");
+
+/***/ }),
+
+/***/ "./src/app/components/container/landing/auth/sign-in/sign-in.component.scss":
+/*!**********************************************************************************!*\
+  !*** ./src/app/components/container/landing/auth/sign-in/sign-in.component.scss ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("@-webkit-keyframes slide-in-top {\n  0% {\n    transform: translateY(-100vh);\n  }\n  100% {\n    transform: translateY(0);\n  }\n}\n@keyframes slide-in-top {\n  0% {\n    transform: translateY(-100vh);\n  }\n  100% {\n    transform: translateY(0);\n  }\n}\n@-webkit-keyframes slide-in-bottom {\n  0% {\n    transform: translateY(100vh);\n  }\n  100% {\n    transform: translateY(0);\n  }\n}\n@keyframes slide-in-bottom {\n  0% {\n    transform: translateY(100vh);\n  }\n  100% {\n    transform: translateY(0);\n  }\n}\n@-webkit-keyframes slideRight {\n  0% {\n    transform: translateX(-100vw);\n  }\n  100% {\n    transform: translateX(0vw);\n  }\n}\n@keyframes slideRight {\n  0% {\n    transform: translateX(-100vw);\n  }\n  100% {\n    transform: translateX(0vw);\n  }\n}\n@-webkit-keyframes slideLeft {\n  0% {\n    transform: translateX(100vw);\n  }\n  100% {\n    transform: translateX(0vw);\n  }\n}\n@keyframes slideLeft {\n  0% {\n    transform: translateX(100vw);\n  }\n  100% {\n    transform: translateX(0vw);\n  }\n}\n@-webkit-keyframes ease-out-right {\n  0% {\n    transform: translateX(-5rem);\n  }\n  85% {\n    transform: translateX(0.3rem);\n  }\n  97% {\n    transform: translateX(-0.2rem);\n  }\n  100% {\n    transform: translateX(0);\n  }\n}\n@keyframes ease-out-right {\n  0% {\n    transform: translateX(-5rem);\n  }\n  85% {\n    transform: translateX(0.3rem);\n  }\n  97% {\n    transform: translateX(-0.2rem);\n  }\n  100% {\n    transform: translateX(0);\n  }\n}\n@-webkit-keyframes shadow {\n  0% {\n    box-shadow: 0 0.1rem 0.2rem 0 rgba(0, 0, 0, 0.101);\n  }\n  100% {\n    box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.201);\n  }\n}\n@keyframes shadow {\n  0% {\n    box-shadow: 0 0.1rem 0.2rem 0 rgba(0, 0, 0, 0.101);\n  }\n  100% {\n    box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.201);\n  }\n}\n@-webkit-keyframes rotate {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}\n@keyframes rotate {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}\n@-webkit-keyframes AnimationName {\n  0% {\n    background-position: 0% 50%;\n  }\n  50% {\n    background-position: 100% 50%;\n  }\n  100% {\n    background-position: 0% 50%;\n  }\n}\n@-webkit-keyframes move-background {\n  0% {\n    background-position: 0% 50%;\n  }\n  50% {\n    background-position: 100% 50%;\n  }\n  100% {\n    background-position: 0% 50%;\n  }\n}\n@keyframes move-background {\n  0% {\n    background-position: 0% 50%;\n  }\n  50% {\n    background-position: 100% 50%;\n  }\n  100% {\n    background-position: 0% 50%;\n  }\n}\n:host {\n  width: 100%;\n  height: 100%;\n  display: flex;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  align-content: center;\n  position: relative;\n  z-index: 4;\n}\n:host ::ng-deep mat-card {\n  font-family: \"Noto-Sans\";\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  box-shadow: none;\n  -webkit-animation: shadow 1s ease-out forwards;\n          animation: shadow 1s ease-out forwards;\n}\n:host ::ng-deep mat-card mat-card-subtitle {\n  text-align: center;\n}\n:host ::ng-deep mat-card form {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  align-content: center;\n}\n:host ::ng-deep mat-card form .button-container {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n:host ::ng-deep mat-card form .button-container mat-error {\n  width: 80%;\n  text-align: center;\n}\n:host ::ng-deep mat-card form .button-container button {\n  width: 100%;\n}\n:host ::ng-deep mat-card mat-card-actions {\n  transform: scale(0.8);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy90emFjaGJvbmZpbC9Qcm9qZWN0cy9jaGF0LW1lLWFwcC9zcmMvYXNzZXRzL3Njc3MvX2FuaW1hdGlvbi5zY3NzIiwic3JjL2FwcC9jb21wb25lbnRzL2NvbnRhaW5lci9sYW5kaW5nL2F1dGgvc2lnbi1pbi9zaWduLWluLmNvbXBvbmVudC5zY3NzIiwiL1VzZXJzL3R6YWNoYm9uZmlsL1Byb2plY3RzL2NoYXQtbWUtYXBwL3NyYy9hcHAvY29tcG9uZW50cy9jb250YWluZXIvbGFuZGluZy9hdXRoL3NpZ24taW4vc2lnbi1pbi5jb21wb25lbnQuc2NzcyIsIi9Vc2Vycy90emFjaGJvbmZpbC9Qcm9qZWN0cy9jaGF0LW1lLWFwcC9zcmMvYXNzZXRzL3Njc3MvX21peGluLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtJQUNFLDZCQUFBO0VDQ0Y7RURFQTtJQUNFLHdCQUFBO0VDQUY7QUFDRjtBRFBBO0VBQ0U7SUFDRSw2QkFBQTtFQ0NGO0VERUE7SUFDRSx3QkFBQTtFQ0FGO0FBQ0Y7QURHQTtFQUNFO0lBQ0UsNEJBQUE7RUNERjtFRElBO0lBQ0Usd0JBQUE7RUNGRjtBQUNGO0FETEE7RUFDRTtJQUNFLDRCQUFBO0VDREY7RURJQTtJQUNFLHdCQUFBO0VDRkY7QUFDRjtBRE1BO0VBQ0U7SUFDRSw2QkFBQTtFQ0pGO0VET0E7SUFDRSwwQkFBQTtFQ0xGO0FBQ0Y7QURGQTtFQUNFO0lBQ0UsNkJBQUE7RUNKRjtFRE9BO0lBQ0UsMEJBQUE7RUNMRjtBQUNGO0FEU0E7RUFDRTtJQUNFLDRCQUFBO0VDUEY7RURVQTtJQUNFLDBCQUFBO0VDUkY7QUFDRjtBRENBO0VBQ0U7SUFDRSw0QkFBQTtFQ1BGO0VEVUE7SUFDRSwwQkFBQTtFQ1JGO0FBQ0Y7QURhQTtFQUNFO0lBQ0UsNEJBQUE7RUNYRjtFRGNBO0lBQ0UsNkJBQUE7RUNaRjtFRGVBO0lBQ0UsOEJBQUE7RUNiRjtFRGdCQTtJQUNFLHdCQUFBO0VDZEY7QUFDRjtBRERBO0VBQ0U7SUFDRSw0QkFBQTtFQ1hGO0VEY0E7SUFDRSw2QkFBQTtFQ1pGO0VEZUE7SUFDRSw4QkFBQTtFQ2JGO0VEZ0JBO0lBQ0Usd0JBQUE7RUNkRjtBQUNGO0FEa0JBO0VBQ0U7SUFDRSxrREFBQTtFQ2hCRjtFRG1CQTtJQUNFLDhDQUFBO0VDakJGO0FBQ0Y7QURVQTtFQUNFO0lBQ0Usa0RBQUE7RUNoQkY7RURtQkE7SUFDRSw4Q0FBQTtFQ2pCRjtBQUNGO0FEb0JBO0VBQ0U7SUFDRSx1QkFBQTtFQ2xCRjtFRHFCQTtJQUNFLHlCQUFBO0VDbkJGO0FBQ0Y7QURZQTtFQUNFO0lBQ0UsdUJBQUE7RUNsQkY7RURxQkE7SUFDRSx5QkFBQTtFQ25CRjtBQUNGO0FEdUJBO0VBQ0U7SUFDRSwyQkFBQTtFQ3JCRjtFRHdCQTtJQUNFLDZCQUFBO0VDdEJGO0VEeUJBO0lBQ0UsMkJBQUE7RUN2QkY7QUFDRjtBRHdDQTtFQUNFO0lBQ0UsMkJBQUE7RUMzQkY7RUQ4QkE7SUFDRSw2QkFBQTtFQzVCRjtFRCtCQTtJQUNFLDJCQUFBO0VDN0JGO0FBQ0Y7QURrQkE7RUFDRTtJQUNFLDJCQUFBO0VDM0JGO0VEOEJBO0lBQ0UsNkJBQUE7RUM1QkY7RUQrQkE7SUFDRSwyQkFBQTtFQzdCRjtBQUNGO0FDM0ZBO0VDRkUsV0FBQTtFQUNBLFlBQUE7RUFDQSxhQUFBO0VBSUEsYUFBQTtFQUNBLHNCQUFBO0VBQ0EsdUJBQUE7RUFDQSxtQkFBQTtFQUNBLHFCQUFBO0VETEEsa0JBQUE7RUFDQSxVQUFBO0FEbUdGO0FDaEdFO0VBQ0Usd0JBQUE7RUFDQSxhQUFBO0VBQ0Esc0JBQUE7RUFDQSxtQkFBQTtFQUNBLGdCQUFBO0VBQ0EsOENBQUE7VUFBQSxzQ0FBQTtBRGtHSjtBQ2hHSTtFQUNFLGtCQUFBO0FEa0dOO0FDL0ZJO0VDZkYsYUFBQTtFQUNBLHNCQUFBO0VBQ0EsdUJBQUE7RUFDQSxtQkFBQTtFQUNBLHFCQUFBO0FGaUhGO0FDbkdNO0VBQ0UsV0FBQTtFQUNBLGFBQUE7RUFDQSxzQkFBQTtFQUNBLG1CQUFBO0FEcUdSO0FDbkdRO0VBQ0UsVUFBQTtFQUNBLGtCQUFBO0FEcUdWO0FDbEdRO0VBQ0UsV0FBQTtBRG9HVjtBQy9GSTtFQUNFLHFCQUFBO0FEaUdOIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9jb250YWluZXIvbGFuZGluZy9hdXRoL3NpZ24taW4vc2lnbi1pbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIkBrZXlmcmFtZXMgc2xpZGUtaW4tdG9wIHtcbiAgMCUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgtMTAwdmgpO1xuICB9XG5cbiAgMTAwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDApO1xuICB9XG59XG5cbkBrZXlmcmFtZXMgc2xpZGUtaW4tYm90dG9tIHtcbiAgMCUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxMDB2aCk7XG4gIH1cblxuICAxMDAlIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMCk7XG4gIH1cbn1cblxuXG5Aa2V5ZnJhbWVzIHNsaWRlUmlnaHQge1xuICAwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC0xMDB2dyk7XG4gIH1cblxuICAxMDAlIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoMHZ3KTtcblxuICB9XG59XG5cbkBrZXlmcmFtZXMgc2xpZGVMZWZ0IHtcbiAgMCUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgxMDB2dyk7XG4gIH1cblxuICAxMDAlIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoMHZ3KTtcblxuICB9XG59XG5cblxuQGtleWZyYW1lcyBlYXNlLW91dC1yaWdodCB7XG4gIDAlIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTVyZW0pO1xuICB9XG5cbiAgODUlIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLjNyZW0pO1xuICB9XG5cbiAgOTclIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLS4ycmVtKTtcbiAgfVxuXG4gIDEwMCUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgwKVxuICB9XG59XG5cblxuQGtleWZyYW1lcyBzaGFkb3cge1xuICAwJSB7XG4gICAgYm94LXNoYWRvdzogMCAuMXJlbSAuMnJlbSAwIHJnYmEoMCwgMCwgMCwgMC4xMDEpO1xuICB9XG5cbiAgMTAwJSB7XG4gICAgYm94LXNoYWRvdzogMCAxcmVtIDJyZW0gMCByZ2JhKDAsIDAsIDAsIDAuMjAxKTtcbiAgfVxufVxuXG5Aa2V5ZnJhbWVzIHJvdGF0ZSB7XG4gIDAlIHtcbiAgICB0cmFuc2Zvcm06IHJvdGF0ZSgwZGVnKTtcbiAgfVxuXG4gIDEwMCUge1xuICAgIHRyYW5zZm9ybTogcm90YXRlKDM2MGRlZyk7XG4gIH1cbn1cblxuXG5ALXdlYmtpdC1rZXlmcmFtZXMgQW5pbWF0aW9uTmFtZSB7XG4gIDAlIHtcbiAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiAwJSA1MCVcbiAgfVxuXG4gIDUwJSB7XG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogMTAwJSA1MCVcbiAgfVxuXG4gIDEwMCUge1xuICAgIGJhY2tncm91bmQtcG9zaXRpb246IDAlIDUwJVxuICB9XG59XG5cbkAtbW96LWtleWZyYW1lcyBtb3ZlLWJhY2tncm91bmQge1xuICAwJSB7XG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogMCUgNTAlXG4gIH1cblxuICA1MCUge1xuICAgIGJhY2tncm91bmQtcG9zaXRpb246IDEwMCUgNTAlXG4gIH1cblxuICAxMDAlIHtcbiAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiAwJSA1MCVcbiAgfVxufVxuXG5Aa2V5ZnJhbWVzIG1vdmUtYmFja2dyb3VuZCB7XG4gIDAlIHtcbiAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiAwJSA1MCVcbiAgfVxuXG4gIDUwJSB7XG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogMTAwJSA1MCVcbiAgfVxuXG4gIDEwMCUge1xuICAgIGJhY2tncm91bmQtcG9zaXRpb246IDAlIDUwJVxuICB9XG59XG4iLCJAa2V5ZnJhbWVzIHNsaWRlLWluLXRvcCB7XG4gIDAlIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoLTEwMHZoKTtcbiAgfVxuICAxMDAlIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMCk7XG4gIH1cbn1cbkBrZXlmcmFtZXMgc2xpZGUtaW4tYm90dG9tIHtcbiAgMCUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxMDB2aCk7XG4gIH1cbiAgMTAwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDApO1xuICB9XG59XG5Aa2V5ZnJhbWVzIHNsaWRlUmlnaHQge1xuICAwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC0xMDB2dyk7XG4gIH1cbiAgMTAwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKDB2dyk7XG4gIH1cbn1cbkBrZXlmcmFtZXMgc2xpZGVMZWZ0IHtcbiAgMCUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgxMDB2dyk7XG4gIH1cbiAgMTAwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKDB2dyk7XG4gIH1cbn1cbkBrZXlmcmFtZXMgZWFzZS1vdXQtcmlnaHQge1xuICAwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01cmVtKTtcbiAgfVxuICA4NSUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgwLjNyZW0pO1xuICB9XG4gIDk3JSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC0wLjJyZW0pO1xuICB9XG4gIDEwMCUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgwKTtcbiAgfVxufVxuQGtleWZyYW1lcyBzaGFkb3cge1xuICAwJSB7XG4gICAgYm94LXNoYWRvdzogMCAwLjFyZW0gMC4ycmVtIDAgcmdiYSgwLCAwLCAwLCAwLjEwMSk7XG4gIH1cbiAgMTAwJSB7XG4gICAgYm94LXNoYWRvdzogMCAxcmVtIDJyZW0gMCByZ2JhKDAsIDAsIDAsIDAuMjAxKTtcbiAgfVxufVxuQGtleWZyYW1lcyByb3RhdGUge1xuICAwJSB7XG4gICAgdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7XG4gIH1cbiAgMTAwJSB7XG4gICAgdHJhbnNmb3JtOiByb3RhdGUoMzYwZGVnKTtcbiAgfVxufVxuQC13ZWJraXQta2V5ZnJhbWVzIEFuaW1hdGlvbk5hbWUge1xuICAwJSB7XG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogMCUgNTAlO1xuICB9XG4gIDUwJSB7XG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogMTAwJSA1MCU7XG4gIH1cbiAgMTAwJSB7XG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogMCUgNTAlO1xuICB9XG59XG5ALW1vei1rZXlmcmFtZXMgbW92ZS1iYWNrZ3JvdW5kIHtcbiAgMCUge1xuICAgIGJhY2tncm91bmQtcG9zaXRpb246IDAlIDUwJTtcbiAgfVxuICA1MCUge1xuICAgIGJhY2tncm91bmQtcG9zaXRpb246IDEwMCUgNTAlO1xuICB9XG4gIDEwMCUge1xuICAgIGJhY2tncm91bmQtcG9zaXRpb246IDAlIDUwJTtcbiAgfVxufVxuQGtleWZyYW1lcyBtb3ZlLWJhY2tncm91bmQge1xuICAwJSB7XG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogMCUgNTAlO1xuICB9XG4gIDUwJSB7XG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogMTAwJSA1MCU7XG4gIH1cbiAgMTAwJSB7XG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogMCUgNTAlO1xuICB9XG59XG46aG9zdCB7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMCU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBhbGlnbi1jb250ZW50OiBjZW50ZXI7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgei1pbmRleDogNDtcbn1cbjpob3N0IDo6bmctZGVlcCBtYXQtY2FyZCB7XG4gIGZvbnQtZmFtaWx5OiBcIk5vdG8tU2Fuc1wiO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBib3gtc2hhZG93OiBub25lO1xuICBhbmltYXRpb246IHNoYWRvdyAxcyBlYXNlLW91dCBmb3J3YXJkcztcbn1cbjpob3N0IDo6bmctZGVlcCBtYXQtY2FyZCBtYXQtY2FyZC1zdWJ0aXRsZSB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cbjpob3N0IDo6bmctZGVlcCBtYXQtY2FyZCBmb3JtIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGFsaWduLWNvbnRlbnQ6IGNlbnRlcjtcbn1cbjpob3N0IDo6bmctZGVlcCBtYXQtY2FyZCBmb3JtIC5idXR0b24tY29udGFpbmVyIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG46aG9zdCA6Om5nLWRlZXAgbWF0LWNhcmQgZm9ybSAuYnV0dG9uLWNvbnRhaW5lciBtYXQtZXJyb3Ige1xuICB3aWR0aDogODAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG46aG9zdCA6Om5nLWRlZXAgbWF0LWNhcmQgZm9ybSAuYnV0dG9uLWNvbnRhaW5lciBidXR0b24ge1xuICB3aWR0aDogMTAwJTtcbn1cbjpob3N0IDo6bmctZGVlcCBtYXQtY2FyZCBtYXQtY2FyZC1hY3Rpb25zIHtcbiAgdHJhbnNmb3JtOiBzY2FsZSgwLjgpO1xufSIsIkBpbXBvcnQgJy4uLy4uLy4uLy4uLy4uLy4uL2Fzc2V0cy9zY3NzL21peGluJztcbkBpbXBvcnQgJy4uLy4uLy4uLy4uLy4uLy4uL2Fzc2V0cy9zY3NzL2FuaW1hdGlvbic7XG5cbjpob3N0IHtcbiAgQGluY2x1ZGUgaG9zdDtcbiAgQGluY2x1ZGUgZmxleC1jZW50ZXI7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgei1pbmRleCA6IDQ7XG5cblxuICA6Om5nLWRlZXAgbWF0LWNhcmQge1xuICAgIGZvbnQtZmFtaWx5ICAgOiAnTm90by1TYW5zJztcbiAgICBkaXNwbGF5ICAgICAgIDogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIGFsaWduLWl0ZW1zICAgOiBjZW50ZXI7XG4gICAgYm94LXNoYWRvdyAgICA6IG5vbmU7XG4gICAgYW5pbWF0aW9uICAgICA6IHNoYWRvdyAxcyBlYXNlLW91dCBmb3J3YXJkcztcblxuICAgIG1hdC1jYXJkLXN1YnRpdGxlIHtcbiAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICB9XG5cbiAgICBmb3JtIHtcbiAgICAgIEBpbmNsdWRlIGZsZXgtY2VudGVyO1xuXG4gICAgICAuYnV0dG9uLWNvbnRhaW5lciB7XG4gICAgICAgIHdpZHRoICAgICAgICAgOiAxMDAlO1xuICAgICAgICBkaXNwbGF5ICAgICAgIDogZmxleDtcbiAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICAgICAgYWxpZ24taXRlbXMgICA6IGNlbnRlcjtcblxuICAgICAgICBtYXQtZXJyb3Ige1xuICAgICAgICAgIHdpZHRoICAgICA6IDgwJTtcbiAgICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICAgIH1cblxuICAgICAgICBidXR0b24ge1xuICAgICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuXG4gICAgbWF0LWNhcmQtYWN0aW9ucyB7XG4gICAgICB0cmFuc2Zvcm06IHNjYWxlKC44KTtcbiAgICB9XG4gIH1cblxuXG5cbn1cbiIsIkBtaXhpbiBob3N0IHtcbiAgd2lkdGggIDogMTAwJTtcbiAgaGVpZ2h0IDogMTAwJTtcbiAgZGlzcGxheTogZmxleDtcbn1cblxuQG1peGluIGZsZXgtY2VudGVyIHtcbiAgZGlzcGxheSAgICAgICAgOiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbiA6IGNvbHVtbjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zICAgIDogY2VudGVyO1xuICBhbGlnbi1jb250ZW50ICA6IGNlbnRlcjtcbn1cblxuQG1peGluIGZsZXgtcm93LXNwYWNlLWJldHdlZW4ge1xuICBkaXNwbGF5ICAgICAgICA6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2Vlbjtcbn1cblxuQG1peGluIHBvc2l0aW9uLWNlbnRlciB7XG4gIHBvc2l0aW9uIDogYWJzb2x1dGU7XG4gIHRvcCAgICAgIDogNTAlO1xuICBsZWZ0ICAgICA6IDUwJTtcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG59XG5cblxuQG1peGluIHJlZ3VsYXItY21wIHtcbiAgaGVpZ2h0OiBjYWxjKDEwMHZoIC0gNS42cmVtKTtcbn1cblxuXG5AbWl4aW4gbGFuZGluZy1jbXAge1xuICBoZWlnaHQ6IDEwMHZoO1xufVxuIl19 */");
+
+/***/ }),
+
+/***/ "./src/app/components/container/landing/auth/sign-in/sign-in.component.ts":
+/*!********************************************************************************!*\
+  !*** ./src/app/components/container/landing/auth/sign-in/sign-in.component.ts ***!
+  \********************************************************************************/
+/*! exports provided: SignInComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignInComponent", function() { return SignInComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+/* harmony import */ var src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/auth/auth.service */ "./src/app/services/auth/auth.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+
+
+
+
+
+let SignInComponent = class SignInComponent {
+    constructor(authService, router, route) {
+        this.authService = authService;
+        this.router = router;
+        this.route = route;
+        this.showPassword = false;
+        this.isLoading = false;
+        this.error = '';
+    }
+    ngOnInit() {
+        this.initUserCheck();
+        this.initForm();
+    }
+    initUserCheck() {
+        this.user$ = this.authService.user$.subscribe(user => {
+            if (user) {
+                this.navigateToPath();
+            }
+        });
+    }
+    initForm() {
+        const email = localStorage.getItem('email');
+        const password = localStorage.getItem('password');
+        this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
+            email: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](email, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].email]),
+            password: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](password, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(6)]),
+            saveUserData: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](true)
+        });
+        if (email && password) {
+            this.onSubmit();
+        }
+    }
+    onSubmit() {
+        this.isLoading = true;
+        const { email, password } = this.form.value;
+        this.authService.onSignIn(email, password).subscribe((res) => {
+            if (res.isValid) {
+                this.onSaveUserData(email, password);
+                const { token, user } = res.body;
+                this.authService.setUser(user);
+                this.authService.setToken(token);
+                this.error = '';
+            }
+            else {
+                this.error = 'Invalid Login Please Try Again';
+                this.authService.onSignOut();
+            }
+            this.isLoading = false;
+        }, (e) => {
+            console.log(e);
+            this.isLoading = false;
+            this.error = e.statusText;
+            this.authService.onSignOut();
+        });
+    }
+    navigateToPath() {
+        const path = localStorage.getItem('path');
+        if (path && !path.match('sign')) {
+            this.router.navigate([path], { relativeTo: this.route });
+            localStorage.removeItem('path');
+        }
+        else {
+            this.router.navigate(['/main'], { relativeTo: this.route });
+        }
+        localStorage.removeItem('path');
+    }
+    onSaveUserData(email, password) {
+        localStorage.setItem('email', email);
+        localStorage.setItem('password', password);
+    }
+    ngOnDestroy() {
+        if (this.user$) {
+            this.user$.unsubscribe();
+        }
+    }
+};
+SignInComponent.ctorParameters = () => [
+    { type: src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] }
+];
+SignInComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-sign-in',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./sign-in.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/container/landing/auth/sign-in/sign-in.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./sign-in.component.scss */ "./src/app/components/container/landing/auth/sign-in/sign-in.component.scss")).default]
+    })
+], SignInComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/container/landing/auth/sign-in/sign-in.module.ts":
+/*!*****************************************************************************!*\
+  !*** ./src/app/components/container/landing/auth/sign-in/sign-in.module.ts ***!
+  \*****************************************************************************/
+/*! exports provided: SignInModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignInModule", function() { return SignInModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _sign_in_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sign-in.component */ "./src/app/components/container/landing/auth/sign-in/sign-in.component.ts");
+/* harmony import */ var src_app_shared_shared_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/shared/shared.module */ "./src/app/shared/shared.module.ts");
+/* harmony import */ var _sign_in_routing__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./sign-in.routing */ "./src/app/components/container/landing/auth/sign-in/sign-in.routing.ts");
+
+
+
+
+
+
+let SignInModule = class SignInModule {
+};
+SignInModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        declarations: [_sign_in_component__WEBPACK_IMPORTED_MODULE_3__["SignInComponent"]],
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            src_app_shared_shared_module__WEBPACK_IMPORTED_MODULE_4__["SharedModule"],
+            _sign_in_routing__WEBPACK_IMPORTED_MODULE_5__["SignInRoutingModule"]
+        ]
+    })
+], SignInModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/container/landing/auth/sign-in/sign-in.routing.ts":
+/*!******************************************************************************!*\
+  !*** ./src/app/components/container/landing/auth/sign-in/sign-in.routing.ts ***!
+  \******************************************************************************/
+/*! exports provided: SignInRoutingModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignInRoutingModule", function() { return SignInRoutingModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+/* harmony import */ var _sign_in_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sign-in.component */ "./src/app/components/container/landing/auth/sign-in/sign-in.component.ts");
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _sign_in_component__WEBPACK_IMPORTED_MODULE_3__["SignInComponent"],
+    }
+];
+let SignInRoutingModule = class SignInRoutingModule {
+};
+SignInRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+    })
+], SignInRoutingModule);
+
+
+
+/***/ })
+
+}]);
+//# sourceMappingURL=auth-sign-in-sign-in-module-es2015.js.map

@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
   fullName: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  subscription: { type: Object },
   image: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Image',

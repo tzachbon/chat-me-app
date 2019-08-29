@@ -48,5 +48,9 @@ export class HttpService {
     return this.http.get(`image/${imageId}`);
   }
 
+  subscription(subscription, userId) {
+    return this.http.post(`user/subscription`, { subscription, userId });
+  }
+
 
 }

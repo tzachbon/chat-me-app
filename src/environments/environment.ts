@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   REST_URL: `http://localhost:8080/api/v1`,
-  WEBSOCKET_URL: `http://localhost:8080/`
+  WEBSOCKET_URL: `http://localhost:8080/`,
+  NOTIFICATION_KEY: `BMOo-DGN52-xQhRI5_YGqjU6VUpADG942WnkbOFDR174yll9cR1WqGgBSexQmmUZ9EQ7-C66pgUfh2XdkG-Ebkc`
 };
 
 /*

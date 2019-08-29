@@ -6,19 +6,56 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const jwtMiddleware = require('../middleware/jwt.middleware');
 const Image = require('../models/image.model');
+const sendGridTransport = require('nodemailer-sendgrid-transport');
+const webPush = require('web-push');
+const transporter = require('nodemailer').createTransport(
+  sendGridTransport({
+    auth: {
+      api_key: `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`
+    }
+  })
+);
 
-router.get('/:name', jwtMiddleware, async (req, res) => {
-  const { name } = req.params;
-  let users;
-  if (!name) {
-    users = [];
-  } else {
-    users = await User.find({ fullName: new RegExp(name, 'i') });
-  }
-  res.status(200).json({
+
+router.post('/subscription', async (req, res) => {
+  const { subscription, userId } = req.body;
+
+  const user = await User.findOneAndUpdate(
+    { _id: userId },
+    {
+      subscription
+    }
+  );
+
+  const payload = {
+    notification: {
+      title: 'ChatMeApp Team',
+      body: `Thank you ${user.fullName} for registering the subscription service!,`,
+      vibrate: [100, 50, 100],
+      data: {
+        dateOfArrival: Date.now(),
+        primaryKey: 1
+      },
+      actions: [
+        {
+          action: 'explore',
+          title: 'Go to the site'
+        }
+      ]
+    }
+  };
+
+  const send = await webPush.sendNotification(
+    subscription,
+    JSON.stringify(payload)
+  );
+  console.log('====================================');
+  console.log(send, user);
+  console.log('====================================');
+  res.status(201).json({
     isValid: true,
     body: {
-      users
+      send
     }
   });
 });
@@ -37,6 +74,16 @@ router.post('/sign-up', async (req, res) => {
       expiresIn: '1h'
     });
     user.password = '';
+    transporter.sendMail({
+      to: email,
+      from: `donotreply@chat-me-app.com`,
+      subject: 'Sign Up Successfully',
+      html: `
+      <h1>You successfully signed up!</h1>
+      <hr/>
+      <a href="https://chat-me-app-free.herokuapp.com/">Click here to redirect to the app!</a>
+      `
+    });
     res.status(201).json({
       isValid: true,
       body: {
@@ -84,6 +131,22 @@ router.post('/sign-in', async (req, res) => {
       }
     });
   }
+});
+
+router.get('/:name', jwtMiddleware, async (req, res) => {
+  const { name } = req.params;
+  let users;
+  if (!name) {
+    users = [];
+  } else {
+    users = await User.find({ fullName: new RegExp(name, 'i') });
+  }
+  res.status(200).json({
+    isValid: true,
+    body: {
+      users
+    }
+  });
 });
 
 module.exports = router;

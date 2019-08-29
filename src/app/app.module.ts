@@ -23,7 +23,7 @@ import { DataInterceptor } from './services/http/interceptor.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     LyThemeModule.setTheme('minima-light'),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: true }),
     SharedModule,
   ],
   providers: [

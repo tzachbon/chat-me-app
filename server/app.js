@@ -6,6 +6,17 @@ const userRoutes = require('./routes/user.routes');
 const groupRoutes = require('./routes/group.routes');
 const imageRoutes = require('./routes/image.routes');
 const path = require('path');
+const webPush = require('web-push');
+const notificationKeys = require('./util/notification-keys.util');
+
+const publicVapidKey = notificationKeys.publicKey;
+const privateVapidKey = notificationKeys.privateKey;
+
+webPush.setVapidDetails(
+  'mailto:tzachbonfil@gmail.com',
+  publicVapidKey,
+  privateVapidKey
+);
 
 const app = express();
 app.use(bodyParser.json({ limit: '10mb', extended: true }));
