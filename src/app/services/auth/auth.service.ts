@@ -35,6 +35,12 @@ export class AuthService {
     return this.http.signUp(user);
   }
 
+  onSignOut() {
+    localStorage.clear();
+    this.user = null;
+    this.userHasChanged();
+  }
+
   getToken() {
     return localStorage.getItem('token');
   }

@@ -39,12 +39,13 @@
           class="primary-button "
           [disabled]="form.invalid"
           [ngClass]="{
-            'submitted-button': isLoading
+            'submitted-button': isLoading && !error
           }"
           color="primary"
         >
           Sign In
         </button>
+        <mat-error *ngIf="error">{{ error }}</mat-error>
         <mat-checkbox formControlName="saveUserData" color="primary"
           >You want to auto sign in next time?</mat-checkbox
         >

@@ -5,6 +5,7 @@ import { IHttp } from 'src/app/models/http.model';
 import { User } from '../../../../../models/user.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-in',
@@ -16,6 +17,7 @@ export class SignInComponent implements OnInit, OnDestroy {
   showPassword = false;
   isLoading = false;
   user$: Subscription;
+  error = '';
 
 
   constructor(
@@ -57,13 +59,23 @@ export class SignInComponent implements OnInit, OnDestroy {
     const { email, password } = this.form.value;
 
     this.authService.onSignIn(email, password).subscribe((res: IHttp<{ token: string, user: User }>) => {
-      this.onSaveUserData(email, password);
-      const { token, user } = res.body;
-      this.authService.setUser(user);
-      this.authService.setToken(token);
+      if (res.isValid) {
+        this.onSaveUserData(email, password);
+        const { token, user } = res.body;
+        this.authService.setUser(user);
+        this.authService.setToken(token);
+        this.error = '';
+      } else {
+        this.error = 'Invalid Login Please Try Again';
+        this.authService.onSignOut();
+      }
       this.isLoading = false;
-
-    })
+    }, (e: HttpErrorResponse) => {
+      console.log(e);
+      this.isLoading = false;
+      this.error = e.statusText;
+      this.authService.onSignOut();
+    });
   }
 
   navigateToPath() {
