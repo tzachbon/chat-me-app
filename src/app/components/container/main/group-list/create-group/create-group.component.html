@@ -55,7 +55,7 @@
                 matCardAvatar
                 class="example-option-img"
                 aria-hidden
-                [src]="user.image"
+                [src]="getUserImage(user)"
               />
               <span>{{
                 user.fullName.length > 10

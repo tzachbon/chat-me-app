@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Message } from '../../../../../../models/message.model';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-chat-message',
@@ -11,7 +12,9 @@ export class ChatMessageComponent implements OnInit {
   @Input() isCurrentUser: boolean;
   @Input() isSiblingMessage: boolean;
   showControl = false;
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+  ) { }
 
   ngOnInit() {
     console.log(this.isSiblingMessage);
@@ -25,5 +28,6 @@ export class ChatMessageComponent implements OnInit {
     }
     return defaultImage;
   }
+
 
 }

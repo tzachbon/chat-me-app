@@ -5,6 +5,8 @@ import { SwPush } from '@angular/service-worker';
 import { AuthService } from './services/auth/auth.service';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { SnackBarService } from './shared/ui/snackbar/snack-bar.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 
@@ -18,7 +20,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     private swPush: SwPush,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private sbs: SnackBarService
+  ) {
     this.fetchUrlPath();
   }
 
@@ -28,6 +32,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   subscribeToNotifications() {
+
     this.swPush.requestSubscription({
       serverPublicKey: environment.NOTIFICATION_KEY
     }).then(res => {
@@ -35,11 +40,18 @@ export class AppComponent implements OnInit, OnDestroy {
         console.log('====================================');
         console.log(status);
         console.log('====================================');
+      }, (e: HttpErrorResponse) => {
+        console.log('====================================');
+        console.log(e);
+        console.log('====================================');
+        this.sbs.onOpenSnackBar(e.message, 'dismiss');
       });
     }).catch(rej => {
-      console.error('====================================');
-      console.error(rej);
-      console.error('====================================');
+      console.log('====================================');
+      console.log(rej);
+      console.log('====================================');
+
+      this.sbs.onOpenSnackBar(rej, 'dismiss');
     });
   }
 

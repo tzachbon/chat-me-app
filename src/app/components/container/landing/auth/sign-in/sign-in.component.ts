@@ -60,7 +60,7 @@ export class SignInComponent implements OnInit, OnDestroy {
 
     this.authService.onSignIn(email, password).subscribe((res: IHttp<{ token: string, user: User }>) => {
       if (res.isValid) {
-        this.onSaveUserData(email, password);
+        this.authService.onSaveUserData(email, password);
         const { token, user } = res.body;
         this.authService.setUser(user);
         this.authService.setToken(token);
@@ -89,11 +89,6 @@ export class SignInComponent implements OnInit, OnDestroy {
     localStorage.removeItem('path');
   }
 
-  onSaveUserData(email, password) {
-    localStorage.setItem('email', email);
-    localStorage.setItem('password', password);
-
-  }
 
   ngOnDestroy() {
     if (this.user$) {

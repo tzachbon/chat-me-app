@@ -57,11 +57,9 @@ export class SignUpComponent implements OnInit {
     const userData: User = this.form.value;
     this.authService.onSignUp(userData).subscribe((res: IHttp<{ user: User, token: string }>) => {
       if (res.isValid) {
-        console.log('====================================');
-        console.log(res.body);
-        console.log('====================================');
         const { token, user } = res.body;
         this.authService.setUser(user);
+        this.authService.onSaveUserData(userData.email, userData.password);
         this.authService.setToken(token);
         this.isLoading = false;
         this.submitted = true;

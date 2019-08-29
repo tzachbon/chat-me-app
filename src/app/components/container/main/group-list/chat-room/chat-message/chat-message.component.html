@@ -44,6 +44,6 @@
     </div>
   </ng-template>
 </div>
-<span class="message-control" *ngIf="showControl">
-  Control Panel In Work
+<span class="message-control" *ngIf="showControl && isCurrentUser">
+  <app-message-control-panel></app-message-control-panel>
 </span>

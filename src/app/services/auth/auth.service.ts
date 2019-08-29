@@ -12,6 +12,13 @@ export class AuthService {
 
   constructor(private http: HttpService) { }
 
+
+  onSaveUserData(email, password) {
+    localStorage.setItem('email', email);
+    localStorage.setItem('password', password);
+
+  }
+
   setUser(user: User) {
     this.user = user;
     this.userHasChanged();

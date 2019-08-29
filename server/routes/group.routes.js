@@ -56,7 +56,7 @@ router.post('/send-message', jwtMiddleware, async (req, res) => {
   const payload = notificationCreator({
     title: `Message From ${user.fullName}`,
     icon: './assets/icons/icon-144x144.png',
-    body: message.message
+    body: message.message,
   });
   const promises = [];
   users.forEach(userData => {
