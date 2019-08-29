@@ -7,9 +7,11 @@
   height  : calc(100vh - 5.6rem);
 
   .control-container {
-    height  : 5rem;
-    position: relative;
-    padding : 0 1rem;
+    height         : 5rem;
+    position       : relative;
+    padding        : 0 2rem;
+    display        : flex;
+    justify-content: space-between;
 
 
     .group-data {

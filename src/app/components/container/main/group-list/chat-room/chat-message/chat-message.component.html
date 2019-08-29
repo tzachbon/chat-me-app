@@ -14,7 +14,9 @@
         <span class="other-user-message-author" *ngIf="!isSiblingMessage">{{
           message.userId.fullName
         }}</span>
-        <span class="other-user-message-content">{{ message.message }}</span>
+        <span class="other-user-message-content">{{
+          message.message || 'Message Is Deleted'
+        }}</span>
         <span class="other-user-message-control">{{
           message.date | date: 'shortTime'
         }}</span>
@@ -30,7 +32,9 @@
         <span class="user-message-author" *ngIf="!isSiblingMessage">{{
           message.userId.fullName
         }}</span>
-        <span class="user-message-content">{{ message.message }}</span>
+        <span class="user-message-content">{{
+          message.message || 'Message Is Deleted'
+        }}</span>
         <span class="user-message-control">{{
           message.date | date: 'shortTime'
         }}</span>
@@ -45,5 +49,8 @@
   </ng-template>
 </div>
 <span class="message-control" *ngIf="showControl && isCurrentUser">
-  <app-message-control-panel></app-message-control-panel>
+  <app-message-control-panel
+    [group]="group"
+    [message]="message"
+  ></app-message-control-panel>
 </span>

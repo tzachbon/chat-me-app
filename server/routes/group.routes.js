@@ -25,6 +25,46 @@ router.post('/add-group', jwtMiddleware, async (req, res) => {
   });
 });
 
+router.delete('/delete-message/:groupId/:messageId', async (req, res) => {
+  const { groupId, messageId } = req.params;
+
+  const group = await Group.findOne({ _id: groupId });
+  const index = group.messages.findIndex(message => message._id == messageId);
+  let message;
+  if (index) {
+    message = group.messages[index];
+    if (message.message) {
+      group.messages[index].message = null;
+      const user = await User.findOne({ _id: message.userId }).populate(
+        'image'
+      );
+      group.messages[index].userId = user || '';
+      await group.save();
+
+      io.getIO().emit(groupId, {
+        action: 'remove-message',
+        data: {
+          message
+        }
+      });
+
+      res.status(201).json({
+        isValid: true,
+        body: {
+          message
+        }
+      });
+    }
+  } else {
+    res.status(409).json({
+      isValid: false,
+      body: {
+        error: 'Message Did not found'
+      }
+    });
+  }
+});
+
 router.post('/send-message', jwtMiddleware, async (req, res) => {
   const { groupId, message } = req.body;
   let group = await Group.findOne({ _id: groupId });
@@ -56,7 +96,7 @@ router.post('/send-message', jwtMiddleware, async (req, res) => {
   const payload = notificationCreator({
     title: `Message From ${user.fullName}`,
     icon: './assets/icons/icon-144x144.png',
-    body: message.message,
+    body: message.message
   });
   const promises = [];
   users.forEach(userData => {

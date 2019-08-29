@@ -52,5 +52,9 @@ export class HttpService {
     return this.http.post(`user/subscription`, { subscription, userId });
   }
 
+  deleteMessage(groupId: string, messageId: string) {
+    return this.http.delete(`group/delete-message/${groupId}/${messageId}`);
+  }
+
 
 }

@@ -7,6 +7,7 @@
       <img [src]="getPic()" matCardAvatar />
       <span>{{ group.name }}</span>
     </div>
+    <app-chat-menu-more [group]="group"></app-chat-menu-more>
   </div>
 
   <mat-nav-list>
@@ -14,6 +15,7 @@
     <div class="messages-container" #messagesContainerRef>
       <div class="message" *ngFor="let message of messages; let i = index">
         <app-chat-message
+          [group]="group"
           [message]="message"
           [isCurrentUser]="isCurrentUser(message.userId)"
           [isSiblingMessage]="isSiblingMessage(i, message.userId)"

@@ -41,13 +41,32 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
   connect() {
     this.wws.listen(this.groupId)
       .subscribe((res: IWebSocketData<{ message: Message }>) => {
-        if (res.action === 'message') {
-          const message = res.data.message;
-          this.pushMessage(message);
-          this.messageInput = '';
-          this.scrollToTheLastMessage();
-        }
+        this.handleWebSocketData(res);
       });
+  }
+
+  handleWebSocketData(socket: IWebSocketData<{ message: Message }>) {
+    switch (socket.action) {
+      case 'message':
+        const message = socket.data.message;
+        this.pushMessage(message);
+        this.messageInput = '';
+        this.scrollToTheLastMessage();
+        break;
+      case 'remove-message':
+        this.editMessage(socket.data.message);
+        break;
+
+    }
+  }
+
+  editMessage(message: Message) {
+    const index = this.messages.findIndex(msg => msg._id === message._id);
+    if (index) {
+      this.messages[index] = message;
+    }
+    console.log(this.messages[index]);
+
   }
 
   pushMessage(message: Message) {

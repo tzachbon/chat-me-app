@@ -1,9 +1,23 @@
-<button class="control-icon-button" mat-icon-button>
+<button
+  [disabled]="!message.message"
+  class="control-icon-button"
+  (click)="onDeleteMessage()"
+  mat-icon-button
+>
   <mat-icon class="mat-18">delete</mat-icon>
 </button>
-<button class="control-icon-button" mat-icon-button>
+<button
+  [disabled]="!message.message"
+  class="control-icon-button"
+  (click)="onEditMessage()"
+  mat-icon-button
+>
   <mat-icon class="mat-18">edit</mat-icon>
 </button>
-<button class="control-icon-button" mat-icon-button>
+<button
+  class="control-icon-button"
+  (click)="onGetMessageInformation()"
+  mat-icon-button
+>
   <mat-icon class="mat-18">information</mat-icon>
 </button>

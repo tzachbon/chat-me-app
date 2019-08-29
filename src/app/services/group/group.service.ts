@@ -41,6 +41,10 @@ export class GroupService {
     return this.http.sendMessage(groupId, message);
   }
 
+  onDeleteMessage(groupId: string, messageId: string) {
+    return this.http.deleteMessage(groupId, messageId);
+  }
+
   onGetImage(group: Group, callBack?: () => void) {
     if (typeof group.image === 'string') {
       this.http.getImage(group.image).subscribe((res: IHttp<{ image: Image }>) => {
