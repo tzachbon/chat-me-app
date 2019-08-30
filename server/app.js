@@ -19,6 +19,7 @@ webPush.setVapidDetails(
 );
 
 const app = express();
+app.use('/', express.static(path.join(__dirname, 'frontend')));
 app.use(bodyParser.json({ limit: '10mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 app.use(headers);
@@ -26,7 +27,6 @@ app.use(headers);
 app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/group', groupRoutes);
 app.use('/api/v1/image', imageRoutes);
-app.use('/', express.static(path.join(__dirname, 'frontend')));
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
 });
